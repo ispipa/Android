@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/copas"
+        android:icon="@android:drawable/presence_video_online"
+        android:title="Copas" />
+    <item
+        android:id="@+id/music"
+        android:icon="@android:drawable/ic_lock_silent_mode_off"
+        android:title="Canciones" />
+    <item
+        android:id="@+id/tinder"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Tinder" />
+    <item
+        android:id="@+id/eventos"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="Eventos" />
+</menu>
