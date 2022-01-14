@@ -45,7 +45,7 @@ ImageView cub;
     }
     public void restar(View v){
         if (copa <= 0){
-           Toast.makeText(this,"No puedes seleccionar numeros negaticos!", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this,"No puedes seleccionar numeros negativos!", Toast.LENGTH_SHORT).show();
         }else {
             copa--;
             total = copa * 9;
