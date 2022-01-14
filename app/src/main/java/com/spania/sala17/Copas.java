@@ -24,6 +24,7 @@ Button pagar;
 ImageView cub;
     int total;
     int copa = 0;
+//pepe2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
