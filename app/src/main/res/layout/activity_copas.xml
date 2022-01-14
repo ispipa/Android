@@ -6,71 +6,651 @@
     android:layout_height="match_parent"
     tools:context=".Copas">
 
-    <ImageView
-        android:id="@+id/cubata"
-        android:layout_width="131dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="19dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="157dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="16dp"
-        android:text="Ron con cola"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.649"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Cal"
-        android:layout_width="160dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="16dp"
-        android:text="0 x 9 = 0 €"
-        app:layout_constraintEnd_toStartOf="@+id/rest"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <Button
-        android:id="@+id/sum"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:onClick="sumar"
-        android:text="+"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/rest"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="20dp"
-        android:onClick="restar"
-        android:text="-"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/button"
-        android:layout_width="363dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="419dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:onClick="pagar"
         android:text="Pagar"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cubata" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableRow
+                android:id="@+id/copa0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa0"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa0"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa0"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum0"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest0"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/copa1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa1"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa1"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa1"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum1"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/copa2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa2"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa2"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa2"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum2"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest2"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/copa3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa3"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa3"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa3"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum3"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest3"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/copa4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa4"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa4"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa4"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum4"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest4"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/copa5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa5"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa5"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa5"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum5"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest5"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/copa5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa5"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa5"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa5"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum5"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest5"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/copa5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/fotocopa5"
+                    android:layout_width="131dp"
+                    android:layout_height="107dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        android:id="@+id/nomcopa5"
+                        android:layout_width="157dp"
+                        android:layout_height="21dp"
+                        android:text="Ron con cola" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/calcopa5"
+                        android:layout_width="160dp"
+                        android:layout_height="26dp"
+                        android:text="0 x 9 = 0 €" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/sum5"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="sumar"
+                        android:text="+" />
+
+                    <Button
+                        android:id="@+id/rest5"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="restar"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

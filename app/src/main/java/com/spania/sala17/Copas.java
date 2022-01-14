@@ -17,30 +17,75 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Copas extends AppCompatActivity {
-TextView cal;
-Button sum;
-Button res;
+TextView [] calcopa=new TextView[7];
+TextView [] nomcopa=new TextView[7];
+Button []sum=new Button[2];
+Button []res= new Button[2];
 Button pagar;
-ImageView cub;
+ImageView []fotocopa= new ImageView[2];
     int total;
     int copa = 0;
-//pepe
+String [] id={"calcopa","nomcopa"};
+String [] nomcop={"RonCoal","RonLimon","VodkaLimon","VodkaNaranja","VodkaCola","JaggerRedBull"};
+int [] calcop={7,7,7,7,7,8};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_copas);
-        cal = findViewById(R.id.Cal);
-        res = findViewById(R.id.rest);
-        sum = findViewById(R.id.sum);
         pagar = findViewById(R.id.button);
-        cub = findViewById(R.id.cubata);
-        cub.setImageResource(R.drawable.cub);
+        /*for (int i = 0; i < nomcopa.length; i++) {
+            calcopa[i] = findViewById(R.id.calcopa[i]);
+            nomcopa[i]=findViewById(R.id.nomcopa);
+            fotocopa[i] = findViewById(R.id.fotocopa);
+        }
+        calcopa = findViewById(R.id.calcopa);
+
+
+        fotocopa = findViewById(R.id.fotocopa);
+        fotocopa.setImageResource(R.drawable.cub);
+
+
+        res = findViewById(R.id.rest);
+        sum = findViewById(R.id.sum);*/
+        int temp;
+        for (int i = 0; i < id.length; i++) {
+            for (int k = 0; k < nomcop.length; k++) {
+                temp =getResources().getIdentifier(id[i]+k,"id",getPackageName());
+                if (i==0){
+                    calcopa[k]=findViewById(temp);
+                    calcopa[k].setText(String.valueOf(calcop[k]));
+                }else{
+                    nomcopa[k]=findViewById(temp);
+                    nomcopa[k].setText(nomcop[k]);
+                }
+
+            }
+
+        }
+
 
     }
-    public void sumar(View v){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public void sumar(View v){
         copa ++;
         total = copa * 9;
-        cal.setText(copa + " x 9 = "+total+"€");
+        calcopa.setText(copa + " x 9 = "+total+"€");
         pagar.setText("El total es de " + total+"€");
     }
     public void restar(View v){
@@ -49,10 +94,10 @@ ImageView cub;
         }else {
             copa--;
             total = copa * 9;
-            cal.setText(copa + " x 9 = " + total + "€");
+            calcopa.setText(copa + " x 9 = " + total + "€");
             pagar.setText("El total es de "+total+"€");
         }
-    }
+    }*/
     public void pagar(View v){
         Intent i = new Intent(this,codigoqr.class);
         if(copa >= 1){
@@ -64,6 +109,35 @@ ImageView cub;
 
         startActivity(i);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
