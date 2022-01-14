@@ -2,6 +2,7 @@ package com.spania.sala17;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ int n=0;
         setContentView(R.layout.activity_tinder);
         nbs = findViewById(R.id.nombress);
 
+        //Recojo el intent de la pantalla de datos del usuario
+        Intent i = getIntent();
 
         nombre.add("maria");
         nombre.add("noe");

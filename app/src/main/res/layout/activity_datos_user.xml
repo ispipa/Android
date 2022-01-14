@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondod"
     tools:context=".DatosUser">
 
     <ImageView
@@ -23,6 +24,7 @@
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +34,7 @@
         tools:text="Bienvenido, Carlos!" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="349dp"
         android:layout_height="210dp"
         android:orientation="vertical"
@@ -41,27 +44,50 @@
         app:layout_constraintTop_toBottomOf="@+id/bienvenida">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btCopas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:backgroundTint="#0054BA"
+            app:cornerRadius="20dp"
+            tools:text="Mis Copas / Comprar" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btEventos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:backgroundTint="#0054BA"
+            app:cornerRadius="20dp"
+            tools:text="Mis Eventos / Comprar" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btTinder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:backgroundTint="#0054BA"
+            app:cornerRadius="20dp"
+            tools:text="Night Tinder" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btCancion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:backgroundTint="#0054BA"
+            app:cornerRadius="20dp"
+            tools:text="Canción Actual ( only VIP )" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="64dp"
+        android:layout_height="59dp"
+        android:backgroundTint="#0054BA"
+        app:cornerRadius="20dp"
+        android:text="Button"
+        app:icon="@android:drawable/ic_menu_manage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imagenUser"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.196" />
 </androidx.constraintlayout.widget.ConstraintLayout>
