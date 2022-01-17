@@ -18,6 +18,7 @@ TextView fg;
 EditText user;
 Button log;
 EditText pss;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
