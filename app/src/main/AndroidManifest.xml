@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sala17">
         <activity
+            android:name=".PagosLanzados"
+            android:exported="false" />
+        <activity
+            android:name=".Pagos"
+            android:exported="false" />
+        <activity
             android:name=".Registros"
             android:exported="true" />
         <activity
@@ -44,5 +50,8 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
 </manifest>
