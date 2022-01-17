@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="298dp"
-        android:layout_height="59dp"
+        android:layout_width="237dp"
+        android:layout_height="65dp"
         android:fontFamily="@font/bangers"
         android:gravity="center"
         android:text="Mis entradas:"
@@ -18,7 +18,7 @@
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.029"
@@ -55,8 +55,10 @@
                     app:srcCompat="@drawable/fiesta" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/entrada1"
                     android:layout_width="261dp"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/bangers"
                     android:layout_height="match_parent"
                     android:background="@drawable/styletxtview"
                     android:text="TextView" />
@@ -74,11 +76,13 @@
                     app:srcCompat="@drawable/fiesta" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/entrada2"
                     android:layout_width="261dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/styletxtview"
-                    android:text="TextView" />
+                    android:fontFamily="@font/bangers"
+                    android:text="TextView"
+                    android:textSize="30sp" />
             </TableRow>
 
             <TableRow
@@ -93,8 +97,10 @@
                     app:srcCompat="@drawable/fiesta" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/entrada3"
                     android:layout_width="261dp"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/bangers"
                     android:layout_height="match_parent"
                     android:background="@drawable/styletxtview"
                     android:text="TextView" />
@@ -113,8 +119,10 @@
                     app:srcCompat="@drawable/fiesta" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/entrada4"
                     android:layout_width="261dp"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/bangers"
                     android:layout_height="match_parent"
                     android:background="@drawable/styletxtview"
                     android:text="TextView" />
@@ -126,7 +134,7 @@
         android:id="@+id/btCompra"
         android:layout_width="267dp"
         android:layout_height="60dp"
-        android:backgroundTint="#0054BA"
+        android:backgroundTint="#ffbd21"
         android:text="Comprar"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,4 +142,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
         tools:text="Comprar" />
+
+    <Button
+        android:id="@+id/retorno"
+        android:layout_width="61dp"
+        android:layout_height="46dp"
+        android:background="@android:drawable/ic_menu_revert"
+        android:backgroundTint="#ffbd21"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

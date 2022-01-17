@@ -21,6 +21,10 @@ public class DatosUser extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_user);
+
+        //aqui vuelvo de la seccion de eventos
+        Intent volverAtras = getIntent();
+
         btTinder = findViewById(R.id.btTinder);
         btEventos = findViewById(R.id.btEventos);
         bienvenida = findViewById(R.id.bienvenida);

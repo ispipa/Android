@@ -15,9 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
-    TextView fg;
     EditText email;
-    Button log;
     EditText pss;
     String nombre;
     @Override
