@@ -13,46 +13,48 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-TextView fg;
-EditText user;
-Button log;
-EditText pss;
+public class MainActivity extends AppCompatActivity
+{
+    TextView fg;
+    EditText email;
+    Button log;
+    EditText pss;
+    String nombre;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fg = findViewById(R.id.txtfg);
-        user = findViewById(R.id.user);
         log = findViewById(R.id.log);
-        pss = findViewById(R.id.Pssw);
+        email = findViewById(R.id.email);
+        pss = findViewById(R.id.password);
         //forgot();
 
     }
-    public void onclick(View v ){
-    if(user.getText().toString().equals("user")&&pss.getText().toString().equals("user")){
-        Toast.makeText(this,"Logeado",Toast.LENGTH_LONG).show();
-    }else{
-        Toast.makeText(this,"Introdice de nuevo los datos",Toast.LENGTH_LONG).show();
-        fg.setText("Recuperar contraseña");
+    public void onclick(View v )
+    {
+        nombre = email.getText().toString();
+        if(!nombre.equals(""))
+        {
+            String nombreUser = nombre;
+            Intent primerIntent = new Intent(MainActivity.this, DatosUser.class);
+            primerIntent.putExtra("nombreUser", nombreUser);
+            startActivity(primerIntent);
+        }
     }
-    }
-   /* public void forgot(){
-       if (user.getText().equals("")){
-           fg.setText("");
-       }else{
-           fg.setText("Change passw?");
-       }
-    }*/
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.tinder:
                 Toast.makeText(MainActivity.this,"Entrando a tinder aaaaa",Toast.LENGTH_SHORT).show();
                 Intent t = new Intent(this, Tinder.class);

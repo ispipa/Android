@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sala17">
         <activity
+            android:name=".DatosUser"
+            android:exported="true" />
+        <activity
             android:name=".Seleccionador"
             android:exported="false" />
         <activity
