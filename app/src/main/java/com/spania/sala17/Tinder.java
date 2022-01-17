@@ -1,8 +1,12 @@
 package com.spania.sala17;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,15 +28,6 @@ int n=0;
         setContentView(R.layout.activity_tinder);
         nbs = findViewById(R.id.nombress);
 
-
-        nombre.add("maria");
-        nombre.add("noe");
-        nombre.add("Sand");
-        nombre.add("Ana");
-        nombre.add("mamahuevo");
-        nombre.add("lucifer");
-        nombre.add("lucia");
-        //nbs.setText(nombre.get(0));
 
         s=new ArrayList<String>();
         s.add("one");
@@ -77,5 +72,39 @@ int n=0;
 
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.tinder:
+                Toast.makeText(Tinder.this,"Entrando a tinder aaaaa",Toast.LENGTH_SHORT).show();
+                Intent t = new Intent(this, Tinder.class);
+                startActivity(t);
+                break;
+            case R.id.copas:
+                Intent i = new Intent(this, Copas.class);
+                Toast.makeText(Tinder.this, "Entrando a copas", Toast.LENGTH_SHORT).show();
+                startActivity(i);
+                break;
+            case R.id.eventos:
+                Intent e = new Intent(this,Eventos.class);
+                startActivity(e);
+                Toast.makeText(Tinder.this,"Entrando a eventos", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.music:
+                Intent m = new Intent(this,Music.class);
+                startActivity(m);
+                Toast.makeText(Tinder.this, "Entrando a Spotify",Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(Tinder.this,"Reinicie la aplicacion", Toast.LENGTH_LONG).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
