@@ -54,7 +54,7 @@ EditText pss;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.tinder:
-                Toast.makeText(MainActivity.this,"Entrando a tinder aaaaa",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Entrando a tinder ",Toast.LENGTH_SHORT).show();
                 Intent t = new Intent(this, Tinder.class);
                 startActivity(t);
                 break;

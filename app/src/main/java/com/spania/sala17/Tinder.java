@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,23 +21,41 @@ ArrayList<String>s;
 ArrayList<String>nombre = new ArrayList<String>();
 ArrayAdapter arrayAdapter;
 TextView nbs;
-
+boolean Female = false;
 int n=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tinder);
-        nbs = findViewById(R.id.nombress);
+        nbs = findViewById(R.id.finaltexto);
+        nbs.setVisibility(View.INVISIBLE);
 
 
         s=new ArrayList<String>();
-        s.add("one");
-        s.add("dos");
-        s.add("tres");
-        s.add("cuatro");
-        s.add("cinco");
-        s.add("seis");
-        s.add("siete");
+        if(Female == false) {
+            s.add("one");
+            s.add("dos");
+            s.add("tres");
+            s.add("cuatro");
+            s.add("cinco");
+            s.add("seis");
+            s.add("siete");
+            s.add("one");
+            s.add("dos");
+            s.add("tres");
+            s.add("cuatro");
+            s.add("cinco");
+            s.add("seis");
+            s.add("siete");
+        }else{
+            s.add("ola");
+            s.add("ola");
+            s.add("tres");
+            s.add("cuatro");
+            s.add("cinco");
+            s.add("seis");
+            s.add("siete");
+        }
         SwipeFlingAdapterView swipeFlingAdapterView=(SwipeFlingAdapterView) findViewById(R.id.card);
 
 
@@ -82,7 +101,7 @@ int n=0;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.tinder:
-                Toast.makeText(Tinder.this,"Entrando a tinder aaaaa",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tinder.this,"Entrando a tinder ",Toast.LENGTH_SHORT).show();
                 Intent t = new Intent(this, Tinder.class);
                 startActivity(t);
                 break;
