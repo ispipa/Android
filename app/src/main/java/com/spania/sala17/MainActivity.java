@@ -15,9 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
-    TextView fg;
     EditText email;
-    Button log;
     EditText pss;
     String nombre;
     @Override
@@ -25,8 +23,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fg = findViewById(R.id.txtfg);
-        log = findViewById(R.id.log);
         email = findViewById(R.id.email);
         pss = findViewById(R.id.password);
         //forgot();
