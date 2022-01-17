@@ -21,6 +21,117 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="0.029"
         tools:text="Mis entradas:" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="409dp"
+        android:layout_height="386dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="108dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="148dp"
+                    android:layout_height="150dp"
+                    app:cornerRadius="20dp"
+                    app:srcCompat="@drawable/fiesta" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="261dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/styletxtview"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="148dp"
+                    android:layout_height="150dp"
+                    app:cornerRadius="20dp"
+                    app:srcCompat="@drawable/fiesta" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="261dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/styletxtview"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="148dp"
+                    android:layout_height="150dp"
+                    app:cornerRadius="20dp"
+                    app:srcCompat="@drawable/fiesta" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="261dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/styletxtview"
+                    android:text="TextView" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="148dp"
+                    android:layout_height="150dp"
+                    app:cornerRadius="20dp"
+                    app:srcCompat="@drawable/fiesta" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="261dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/styletxtview"
+                    android:text="TextView" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btCompra"
+        android:layout_width="267dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#0054BA"
+        android:text="Comprar"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        tools:text="Comprar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

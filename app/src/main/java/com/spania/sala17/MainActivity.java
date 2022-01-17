@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fg = findViewById(R.id.txtfg);
-        log = findViewById(R.id.log);
         email = findViewById(R.id.email);
         pss = findViewById(R.id.password);
         //forgot();
