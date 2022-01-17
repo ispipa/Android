@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondod"
+    android:background="#000000"
     tools:context=".DatosUser">
 
     <ImageView
@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
+            android:text="Mis Copas / Comprar"
             app:cornerRadius="20dp"
             tools:text="Mis Copas / Comprar" />
 
@@ -56,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
+            android:text="Mis Eventos / Comprar"
             app:cornerRadius="20dp"
             tools:text="Mis Eventos / Comprar" />
 
@@ -64,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
+            android:text="Night Tinder"
             app:cornerRadius="20dp"
             tools:text="Night Tinder" />
 
@@ -72,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
+            android:text="Canción Actual ( only VIP )"
             app:cornerRadius="20dp"
             tools:text="Canción Actual ( only VIP )" />
     </LinearLayout>
@@ -81,8 +85,8 @@
         android:layout_width="64dp"
         android:layout_height="59dp"
         android:backgroundTint="#0054BA"
-        app:cornerRadius="20dp"
         android:text="Button"
+        app:cornerRadius="20dp"
         app:icon="@android:drawable/ic_menu_manage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imagenUser"
