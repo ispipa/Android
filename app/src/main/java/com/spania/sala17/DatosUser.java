@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class DatosUser extends AppCompatActivity
 {
     Button btTinder;
+    TextView bienvenida;
+    String welcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -17,7 +20,10 @@ public class DatosUser extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_user);
         btTinder = findViewById(R.id.btTinder);
-
+        bienvenida = findViewById(R.id.bienvenida);
+        Intent j = getIntent();
+        welcome = j.getStringExtra("nombreUser");
+        bienvenida.setText("Bienvenido, " + welcome + "!");
         //Pasar de esta activity a la del Tinder
         btTinder.setOnClickListener(new View.OnClickListener()
         {
