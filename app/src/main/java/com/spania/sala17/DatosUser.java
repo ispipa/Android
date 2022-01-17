@@ -23,7 +23,7 @@ public class DatosUser extends AppCompatActivity
         bienvenida = findViewById(R.id.bienvenida);
         Intent j = getIntent();
         welcome = j.getStringExtra("nombreUser");
-        bienvenida.setText("Bienvenido, " + welcome + "!");
+        bienvenida.setText("Willkommen, " + welcome + "!");
         //Pasar de esta activity a la del Tinder
         btTinder.setOnClickListener(new View.OnClickListener()
         {
