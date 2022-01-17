@@ -1,10 +1,6 @@
 package com.spania.sala17;
 
-import static com.spania.sala17.R.id.nomUsuario;
-import static com.spania.sala17.R.id.south;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Registros extends AppCompatActivity
 {
 
     TextView[] datosUsuario;
-    String[] datosObtenidos;
+    ArrayList<String> datosObtenidos = new ArrayList<>();
     Button registro;
     TextView sing;
 
@@ -30,10 +28,6 @@ public class Registros extends AppCompatActivity
         registro = findViewById(R.id.registro);
         sing = findViewById(R.id.singn);
         //------------------------------------------------
-        /*DividerItemDecoration decoration = new DividerItemDecoration(Registros.this,DividerItemDecoration.VERTICAL);
-        decoration.setDrawable(getDrawable());
-        sing.add*/
-        //------------------------------------------------
         onClik();
         //------------------------------------------------
     }
@@ -43,20 +37,13 @@ public class Registros extends AppCompatActivity
         {
             if(!datosUsuario[i].getText().toString().equals(""))
             {
-                cogerDatos();
+                datosObtenidos.add(datosUsuario[i].getText().toString());
+                System.out.println(datosObtenidos.get(i));
             }
             else
             {
                 Toast.makeText(Registros.this,"Por favor, rellene todos los campos",Toast.LENGTH_SHORT).show();
             }
-        }
-    }
-    private void cogerDatos()
-    {
-        datosObtenidos = new String[4];
-        for (int i = 0 ; i < datosUsuario.length ; i++)
-        {
-            datosObtenidos[i] = datosUsuario[i].getText().toString();
         }
     }
     private void onClik()

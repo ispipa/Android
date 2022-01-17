@@ -18,7 +18,9 @@ TextView fg;
 EditText user;
 Button log;
 EditText pss;
-
+//-----------------
+    Button hola;
+//-----------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,16 @@ EditText pss;
         user = findViewById(R.id.user);
         log = findViewById(R.id.log);
         pss = findViewById(R.id.Pssw);
+        //--------------------
+        hola = findViewById(R.id.hola);
+        hola.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(MainActivity.this, Registros.class);
+                startActivity(a);
+            }
+        });
+        //--------------------
         //forgot();
 
     }
