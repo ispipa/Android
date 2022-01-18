@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -18,6 +17,7 @@ public class MainActivity extends AppCompatActivity
     EditText email;
     EditText pss;
     String nombre;
+    Button btRegistro;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -25,7 +25,17 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         email = findViewById(R.id.email);
         pss = findViewById(R.id.password);
+        btRegistro = findViewById(R.id.reg);
         //forgot();
+        btRegistro.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                /*Intent registrarse = new Intent(MainActivity.this, Registro.class);
+                startActivity(registrarse);*/
+            }
+        });
 
     }
     public void onclick(View v )
@@ -39,6 +49,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(primerIntent);
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -77,6 +88,11 @@ public class MainActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
-//prueba de hacer merges
-    //confirmacion de funcionamiento de merges
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        String nombreUser = nombre;
+    }
 }

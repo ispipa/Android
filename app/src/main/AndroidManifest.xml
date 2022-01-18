@@ -22,7 +22,7 @@
             android:name=".Seleccionador"
             android:exported="false" />
         <activity
-            android:name=".codigoqr"
+            android:name=".Codigoqr"
             android:exported="false" />
         <activity
             android:name=".Music"
