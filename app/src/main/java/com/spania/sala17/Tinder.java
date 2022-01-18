@@ -29,11 +29,13 @@ public class Tinder extends AppCompatActivity {
         cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
 
         // on below line we are adding data to our array list.
-        courseModalArrayList.add(new CourseModal("C++", "30 days", "20 Tracks", "C++ Self Paced Course", R.drawable.cub));
-        courseModalArrayList.add(new CourseModal("Java", "30 days", "20 Tracks", "Java Self Paced Course", R.drawable.cub));
-        courseModalArrayList.add(new CourseModal("Python", "30 days", "20 Tracks", "Python Self Paced Course", R.drawable.cub));
-        courseModalArrayList.add(new CourseModal("DSA", "30 days", "20 Tracks", "DSA Self Paced Course", R.drawable.cub));
-        courseModalArrayList.add(new CourseModal("PHP", "30 days", "20 Tracks", "PHP Self Paced Course", R.drawable.cub));
+        courseModalArrayList.add(new CourseModal("Ana", "24 años", "Soltera", "Sobre mí: Me gusta cantar y hablar, chicos con el pelo desordenado, leer el diario los domingos por la mañana, y las voces divertidas.", R.drawable.chica_1));
+        courseModalArrayList.add(new CourseModal("Susana", "26 años", "Es complicado", "Todas las chicas felices son iguales; cada chica infeliz es infeliz a su manera. Mi tipo de infeliz está lleno de humor de autoestima, doble IPAs, y en realidad es bastante radical.\n" +
+                "Avísenme si quieren ser miserables juntos.", R.drawable.chica_2));
+        courseModalArrayList.add(new CourseModal("Sandra", "28 años", "Soltera", "Vivo toda mi vida creando situaciones que eventualmente me llevarán a la frase «Y luego las risas siguieron…»; Esperando que ésta también funcione.", R.drawable.chica_3));
+        courseModalArrayList.add(new CourseModal("Lucia", "27 años", "En una relación", "Soy muy importante. Tengo muchos libros encuadernados en cuero y mi apartamento huele a caoba rica. ¿A qué huele tu apartamento?", R.drawable.chica_4));
+        courseModalArrayList.add(new CourseModal("Alexia", "26 años", "Soltera", "Deberías saber que odio a los ancianos, a los niños y a los perros;\n" +
+                "En realidad, me encantan todas esas cosas, pero si sabes de qué película es esa frase, deberíamos salir.", R.drawable.chica_5));
 
         // on below line we are creating a variable for our adapter class and passing array list to it.
         final DeckAdapter adapter = new DeckAdapter(courseModalArrayList, this);
