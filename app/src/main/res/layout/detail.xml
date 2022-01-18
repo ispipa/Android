@@ -4,53 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondod">
+   >
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="410dp"
-        android:layout_height="602dp"
-        android:background="#639F74"
-        android:backgroundTint="#FAF6F6"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/card_stack_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="524dp"
-        android:layout_marginEnd="300dp"
-        android:background="@drawable/dislike"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dislike" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="66dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="524dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/like" />
-
-    <TextView
-        android:id="@+id/finaltexto"
-        android:layout_width="309dp"
-        android:layout_height="73dp"
-        android:text="Ya no hay mas"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="202dp" />
+    </com.yuyakaido.android.cardstackview.CardStackView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

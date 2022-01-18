@@ -20,15 +20,14 @@ public class Tinder extends AppCompatActivity {
 ArrayList<String>s;
 ArrayList<String>nombre = new ArrayList<String>();
 ArrayAdapter arrayAdapter;
-TextView nbs;
+
 boolean Female = false;
 int n=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tinder);
-        nbs = findViewById(R.id.finaltexto);
-        nbs.setVisibility(View.INVISIBLE);
+
 
 
         s=new ArrayList<String>();
