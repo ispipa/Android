@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="148dp"
+        android:layout_height="150dp"
+        app:cornerRadius="20dp"
+        app:srcCompat="@drawable/fiesta" />
+
+    <TextView
+        android:id="@+id/entrada1"
+        android:layout_width="261dp"
+        android:textSize="30sp"
+        android:fontFamily="@font/bangers"
+        android:layout_height="match_parent"
+        android:background="@drawable/styletxtview"
+        android:text="TextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
