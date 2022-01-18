@@ -51,45 +51,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-    {
-        switch (item.getItemId())
-        {
-            case R.id.tinder:
-                Toast.makeText(MainActivity.this,"Entrando a tinder aaaaa",Toast.LENGTH_SHORT).show();
-                Intent t = new Intent(this, Tinder.class);
-                startActivity(t);
-                break;
-            case R.id.copas:
-                Intent i = new Intent(this, Copas.class);
-                Toast.makeText(MainActivity.this, "Entrando a copas", Toast.LENGTH_SHORT).show();
-                startActivity(i);
-                break;
-            case R.id.eventos:
-                Intent e = new Intent(this,Eventos.class);
-                startActivity(e);
-                Toast.makeText(MainActivity.this,"Entrando a eventos", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.music:
-                Intent m = new Intent(this,Music.class);
-                startActivity(m);
-                Toast.makeText(MainActivity.this, "Entrando a Spotify",Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                Toast.makeText(MainActivity.this,"Reinicie la aplicacion", Toast.LENGTH_LONG).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     protected void onResume()
     {
         super.onResume();
