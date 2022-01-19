@@ -34,9 +34,9 @@ Button []res= new Button[2];
 Button pagar;
 ImageView []fotocopa= new ImageView[2];
     int total;
-    int copa = 8;
+    int copa = 0;
 String [] id={"calcopa","nomcopa"};
- long cod=9;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +63,7 @@ String [] id={"calcopa","nomcopa"};
             }
 
         }
-       find();
+       fined();
 
 
     }
@@ -176,31 +176,38 @@ String [] id={"calcopa","nomcopa"};
         }
         return super.onOptionsItemSelected(item);
     }
-    private void find(){
+    private void fined(){
+        for (int i = 0; i < 25; i++) {
+            long cod=i;
+
             Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
             ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
-            Call<Bebida> call = consultaApi.find((long)5);
+            Call<Bebida> call = consultaApi.find((cod));
+            int finalI = i;
+
             call.enqueue(new Callback<Bebida>() {
                 @Override
                 public void onResponse(Call<Bebida> call, Response<Bebida> response) {
-                    try{
-                        if (response.isSuccessful()){
+                    try {
+                        if (response.isSuccessful()) {
                             Bebida bebida = response.body();
-                            nomcopa[0].setText(bebida.getNombreBebida());
-                            calcopa[0].setText(String.valueOf(bebida.getPrecio()));
+                            nomcopa[finalI].setText("nombre " + bebida.getNombreBebida());
+                            calcopa[finalI].setText("precio " + String.valueOf(bebida.getPrecio()));
                         }
 
-                    }catch (Exception ex){
+                    } catch (Exception ex) {
                         Toast.makeText(Copas.this, "pepe", Toast.LENGTH_SHORT).show();
                     }
 
                 }
+
                 @Override
                 public void onFailure(Call<Bebida> call, Throwable t) {
-                    Toast.makeText(Copas.this, "fallo", Toast.LENGTH_SHORT).show();
+                    System.out.println(t.toString());
+                    Toast.makeText(Copas.this, t.toString(), Toast.LENGTH_LONG).show();
                 }
             });
-
+        }
     }
 
 }
