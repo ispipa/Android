@@ -1,10 +1,17 @@
 package com.spania.sala17;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.daprlabs.cardstack.SwipeDeck;
 import com.spania.sala17.CourseModal;
@@ -18,6 +25,8 @@ public class Tinder extends AppCompatActivity {
     // for our array list and swipe deck.
     private SwipeDeck cardStack;
     private ArrayList<CourseModal> courseModalArrayList;
+    static final String CHANNEL_ID = "canal";
+    PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +57,30 @@ public class Tinder extends AppCompatActivity {
             @Override
             public void cardSwipedLeft(int position) {
                 // on card swipe left we are displaying a toast message.
-                Toast.makeText(Tinder.this, "Card Swiped Left", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Tinder.this, "Dislike", Toast.LENGTH_SHORT).show();
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void cardSwipedRight(int position) {
+                NotificationChannel channel = null;
                 // on card swiped to right we are displaying a toast message.
-                Toast.makeText(Tinder.this, "Card Swiped Right", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tinder.this, courseModalArrayList.get(position).getCourseName(), Toast.LENGTH_SHORT).show();
+                channel = new NotificationChannel(CHANNEL_ID, "NEW", NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                manager.createNotificationChannel(channel);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                        .setSmallIcon(R.drawable.chica_5)
+                        .setContentTitle("Sala17")
+                        .setContentText("Has enviado una copa a @"+courseModalArrayList.get(position).getCourseName() )
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setContentIntent(pendingIntent)
+                        .setVisibility(NotificationCompat.VISIBILITY_PRIVATE);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getApplicationContext());
+                managerCompat.notify(1, builder.build());
+
+
             }
 
             @Override
