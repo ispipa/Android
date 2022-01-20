@@ -14,6 +14,10 @@ public class Bebida {
     @Expose
     private int precio;
 
+    @SerializedName("imgBebida")
+    @Expose
+    private String imgBebida;
+
     public long getId_bebida() {
         return id_bebida;
     }
@@ -36,5 +40,13 @@ public class Bebida {
 
     public void setPrecio(int precio) {
         this.precio = precio;
+    }
+
+    public String getImgBebida() {
+        return imgBebida;
+    }
+
+    public void setImgBebida(String imgBebida) {
+        this.imgBebida = imgBebida;
     }
 }

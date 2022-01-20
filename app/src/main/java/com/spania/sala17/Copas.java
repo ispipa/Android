@@ -28,19 +28,20 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Copas extends AppCompatActivity {
-TextView [] calcopa=new TextView[25];
-TextView [] nomcopa=new TextView[25];
-Button []sum=new Button[25];
-Button []rest= new Button[25];
+TextView [] calcopa=new TextView[26];
+TextView [] nomcopa=new TextView[26];
+Button []sum=new Button[26];
+Button []rest= new Button[26];
 Button pagar;
-ImageView []fotocopa= new ImageView[2];
+ImageView []fotocopa= new ImageView[26];
     int total;
     int copa = 0;
 String [] id={"calcopa","nomcopa","sum","rest"};
-String listanombre[]=new String[25];
-int listaprecio[]=new int[25];
-int resulcopa[]=new int[25];
-int cant[]=new int[25];
+String listanombre[]=new String[26];
+int listaprecio[]=new int[26];
+int resulcopa[]=new int[26];
+int cant[]=new int[26];
+String img[]=new String[26];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,6 @@ int cant[]=new int[25];
         fotocopa[0]=findViewById(R.id.fotocopa0);
         autofinbyid();
        fined();
-
     }
 
     //auto findbyid
@@ -72,10 +72,10 @@ int cant[]=new int[25];
                     case 3:
                         rest[k]=findViewById(temp);
                         break;
-
                 }
             }
         }
+
     }
     //autobusqueda de boton y calculo suma
     public void sumar(View v){
@@ -86,7 +86,6 @@ int cant[]=new int[25];
                 calcopa[i].setText(cant[i]+" x "+listaprecio[i]+" = "+resulcopa[i]+"€");
             }
         }
-        Glide.with(this).load("https://previews.dropbox.com/p/thumb/ABaxvhyJQMIqsiG-ECPvx3_gqoO5Wg51lzvBA_2DRPoWqO4hKCkSlKT4vXooF2VGbjXDM46BD2AwyM0LgQVY6oEdDQcnGBp8J8Vu5DKPholOkaDMhEkWwy6bFVfw4eKqk-8pMwEQSdwadmByPgHz2AcxKwyiRxy8WUPzP4jrRUOSVVC34GhsVWBY7Vdnq1GyVl-9fGdkfOEjQ_2s-Nz8Db8LLjVsnviWpZfMYg-VMMYmVKY60Yj7jVQydhl9WPEBGwWPX32HzkbCF_s5mav-solqALr2VB6uabiCCEVmnjVDsN6Q4S_qkvqiqH03UIlzsQZFsnxLMYC7AdLAv-3oWUq53AHCRU2LLfYa4F5ez-yeRQ/p.png").into(fotocopa[0]);
         total();
     }
     //autobusqueda de boton y calculo resta
@@ -102,14 +101,20 @@ int cant[]=new int[25];
         }
         total();
     }
+    //boton total con la suma total de las bebidas
     private void total(){
+
+        /*for (int i = 0; i < img.length; i++) {
+            System.out.println(img[i]);
+            //Glide.with(Copas.this).load(img[i]).into(fotocopa[i]);
+        }*/
         total=0;
         for (int i = 0; i < resulcopa.length; i++) {
             total+=resulcopa[i];
         }
         pagar.setText("El total es de "+total+"€");
     }
-
+    //pagar y pasar datos a la otra activiti
     public void pagar(View v){
         Intent i = new Intent(this,codigoqr.class);
         for (int k = 0; k < nomcopa.length; k++) {
@@ -122,16 +127,14 @@ int cant[]=new int[25];
         }else{
 
         }*/
-
-
         startActivity(i);
     }
     //recoger las bebidas y su precio de la base de datos.
     private void fined(){
         long cod;
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < listanombre.length; i++) {
             cod=i+1;
-            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-50-19-152-42.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
             ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
             Call<Bebida> call = consultaApi.find((cod));
             int finalI = i;
@@ -143,6 +146,9 @@ int cant[]=new int[25];
                             Bebida bebida = response.body();
                             nomcopa[finalI].setText(bebida.getNombreBebida());
                             calcopa[finalI].setText("0 x "+String.valueOf(bebida.getPrecio())+" ");
+                            //Glide.with(Copas.this).load(bebida.getImgBebida()).into(fotocopa[finalI]);
+                            System.out.println(bebida.getImgBebida());
+                            img[finalI]=bebida.getImgBebida();
                             listaprecio[finalI]=bebida.getPrecio();
                             listanombre[finalI]=bebida.getNombreBebida();
                         }
@@ -157,6 +163,7 @@ int cant[]=new int[25];
                 }
             });
         }
+
     }
 
     @Override
