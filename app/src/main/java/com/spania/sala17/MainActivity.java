@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +28,7 @@ EditText pss;
         user = findViewById(R.id.user);
         log = findViewById(R.id.log);
         pss = findViewById(R.id.Pssw);
-        //forgot();
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
     }
     public void onclick(View v ){
@@ -37,13 +39,7 @@ EditText pss;
         fg.setText("Recuperar contraseña");
     }
     }
-   /* public void forgot(){
-       if (user.getText().equals("")){
-           fg.setText("");
-       }else{
-           fg.setText("Change passw?");
-       }
-    }*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);

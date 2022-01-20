@@ -3,11 +3,17 @@ package com.spania.sala17;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -28,10 +34,12 @@ public class Tinder extends AppCompatActivity {
     static final String CHANNEL_ID = "canal";
     PendingIntent pendingIntent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tinder);
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FE3C72")));
 
         // on below line we are initializing our array list and swipe deck.
         courseModalArrayList = new ArrayList<>();
@@ -101,5 +109,41 @@ public class Tinder extends AppCompatActivity {
                 Log.i("TAG", "CARDS MOVED UP");
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.tinder:
+                Toast.makeText(Tinder.this,"Entrando a tinder",Toast.LENGTH_SHORT).show();
+                Intent t = new Intent(this, Tinder.class);
+                startActivity(t);
+                break;
+            case R.id.copas:
+                Intent me = new Intent(this, MainActivity.class);
+                Toast.makeText(Tinder.this, "Entrando a copas", Toast.LENGTH_SHORT).show();
+                startActivity(me);
+                break;
+            case R.id.eventos:
+                Intent e = new Intent(this,Eventos.class);
+                startActivity(e);
+                Toast.makeText(Tinder.this,"Entrando a eventos", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.music:
+                Intent m = new Intent(this,Music.class);
+                startActivity(m);
+                Toast.makeText(Tinder.this, "Entrando a Spotify",Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(Tinder.this,"Reinicie la aplicacion", Toast.LENGTH_LONG).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
