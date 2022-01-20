@@ -9,17 +9,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Eventos extends AppCompatActivity
 {
-    TextView primeraEntrada;
-    TextView segundaEntrada;
-    TextView terceraEntrada;
-    TextView cuartaEntrada;
     Button comprar;
     Button retornar;
+    public static ArrayList<Entrada> listadoEntradas;
+    public static CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,20 +27,33 @@ public class Eventos extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventos);
 
-        Intent llegar = getIntent();
-        String textoRecogido = llegar.getStringExtra("infoEntrada");
-
-        //referencio los textView que tengo y al boton
-        primeraEntrada = findViewById(R.id.entrada1);
-        primeraEntrada.setText(textoRecogido);
-
-        segundaEntrada = findViewById(R.id.entrada2);
-        terceraEntrada = findViewById(R.id.entrada3);
-        cuartaEntrada = findViewById(R.id.entrada4);
-        comprar = findViewById(R.id.btCompra);
-        retornar = findViewById(R.id.retorno);
 
         Intent a = getIntent();
+
+        ListView listView = findViewById(R.id.listView);
+        listadoEntradas = new ArrayList<>();
+        //listadoEntradas.add(new Entrada("Barceló 23 de Marzo", R.drawable.pari));
+
+         adapter = new CustomAdapter(listadoEntradas, this);
+        listView.setAdapter(adapter);
+
+        Intent llegar = getIntent();
+        String textoRecogido = llegar.getStringExtra("infoEntrada");
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+
+        //referencio al boton
+
+        comprar = findViewById(R.id.btCompra);
+        retornar = findViewById(R.id.retorno);
 
         //voy a dar funciones al boton
         comprar.setOnClickListener(new View.OnClickListener()

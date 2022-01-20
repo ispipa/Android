@@ -32,10 +32,20 @@ public class PaganiniEntradas extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                /*Eventos.listadoEntradas.add(new Entrada(texto, R.drawable.pari));
+                Eventos.adapter.notifyDataSetChanged();*/
+                finish();
                 Intent volver = new Intent(PaganiniEntradas.this, Eventos.class);
                 volver.putExtra("infoEntrada", texto);
                 startActivity(volver);
             }
         });
     }
+
+    /*@Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        MainActivity.guardarDatos();
+    }*/
 }

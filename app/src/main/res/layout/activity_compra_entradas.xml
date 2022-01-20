@@ -48,7 +48,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/entrada1"
+                    android:id="@+id/entrada"
                     android:layout_width="261dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/styletxtview"

@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="148dp"
-        android:layout_height="150dp"
+        android:id="@+id/imagen"
+        android:layout_width="145dp"
+        android:layout_height="134dp"
         app:cornerRadius="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/entrada"
         app:srcCompat="@drawable/fiesta" />
 
     <TextView
-        android:id="@+id/entrada1"
-        android:layout_width="261dp"
-        android:textSize="30sp"
-        android:fontFamily="@font/bangers"
-        android:layout_height="match_parent"
+        android:id="@+id/entrada"
+        android:layout_width="240dp"
+        android:layout_height="134dp"
         android:background="@drawable/styletxtview"
-        android:text="TextView" />
+        android:fontFamily="@font/bangers"
+        android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

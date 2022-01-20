@@ -36,7 +36,7 @@ public class CompraEntradas extends AppCompatActivity
 
         Intent i = getIntent();
 
-        primeraEntrada = findViewById(R.id.entrada1);
+        primeraEntrada = findViewById(R.id.entrada);
         segundaEntrada = findViewById(R.id.entrada2);
         terceraEntrada = findViewById(R.id.entrada3);
         cuartaEntrada = findViewById(R.id.entrada4);

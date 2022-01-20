@@ -7,6 +7,17 @@
     android:background="#000000"
     tools:context=".Eventos">
 
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="412dp"
+        android:layout_height="424dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/btCompra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="237dp"
@@ -24,133 +35,30 @@
         app:layout_constraintVertical_bias="0.029"
         tools:text="Mis entradas:" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="409dp"
-        android:layout_height="386dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="108dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="SpeakableTextPresentCheck">
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="148dp"
-                    android:layout_height="150dp"
-                    app:cornerRadius="20dp"
-                    app:srcCompat="@drawable/fiesta" />
-
-                <TextView
-                    android:id="@+id/entrada1"
-                    android:layout_width="261dp"
-                    android:textSize="30sp"
-                    android:fontFamily="@font/bangers"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/styletxtview"
-                    android:text="TextView" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="148dp"
-                    android:layout_height="150dp"
-                    app:cornerRadius="20dp"
-                    app:srcCompat="@drawable/fiesta" />
-
-                <TextView
-                    android:id="@+id/entrada2"
-                    android:layout_width="261dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/styletxtview"
-                    android:fontFamily="@font/bangers"
-                    android:text="TextView"
-                    android:textSize="30sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="148dp"
-                    android:layout_height="150dp"
-                    app:cornerRadius="20dp"
-                    app:srcCompat="@drawable/fiesta" />
-
-                <TextView
-                    android:id="@+id/entrada3"
-                    android:layout_width="261dp"
-                    android:textSize="30sp"
-                    android:fontFamily="@font/bangers"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/styletxtview"
-                    android:text="TextView" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="148dp"
-                    android:layout_height="150dp"
-                    app:cornerRadius="20dp"
-                    app:srcCompat="@drawable/fiesta" />
-
-                <TextView
-                    android:id="@+id/entrada4"
-                    android:layout_width="261dp"
-                    android:textSize="30sp"
-                    android:fontFamily="@font/bangers"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/styletxtview"
-                    android:text="TextView" />
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
-
     <Button
         android:id="@+id/btCompra"
         android:layout_width="267dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#ffbd21"
         android:text="Comprar"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
         tools:text="Comprar" />
 
     <Button
         android:id="@+id/retorno"
         android:layout_width="61dp"
         android:layout_height="46dp"
+        android:layout_marginTop="32dp"
         android:background="@android:drawable/ic_menu_revert"
         android:backgroundTint="#ffbd21"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
