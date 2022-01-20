@@ -17,15 +17,15 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class codigoqr extends AppCompatActivity {
 TextView ver;
 ImageView codigo;
+    Intent i;
+    String vere;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_codigoqr);
         ver= findViewById(R.id.ver);
         codigo = findViewById(R.id.imageqr);
-
-        Intent i = getIntent();
-        String vere = i.getStringExtra("message");
+        obtenerdato();
         ver.setText(vere);
         try {
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
@@ -35,5 +35,15 @@ ImageView codigo;
                     e.printStackTrace();
                 }
             }
+    private void obtenerdato(){
+        for (int k = 0; k < 25; k++) {
+            i = getIntent();
+            if (i.getStringExtra("message" + k) != null){
+                vere += i.getStringExtra("message"+k);
+            }
+
+        }
 
     }
+    }
+
