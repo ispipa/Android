@@ -18,7 +18,7 @@ public class Eventos extends AppCompatActivity
 {
     Button comprar;
     Button retornar;
-    public static ArrayList<Entrada> listadoEntradas;
+    public static ArrayList<Entrada> listadoEntradas = new ArrayList<>();
     public static CustomAdapter adapter;
 
     @Override
@@ -31,25 +31,15 @@ public class Eventos extends AppCompatActivity
         Intent a = getIntent();
 
         ListView listView = findViewById(R.id.listView);
-        listadoEntradas = new ArrayList<>();
         //listadoEntradas.add(new Entrada("Barceló 23 de Marzo", R.drawable.pari));
 
-         adapter = new CustomAdapter(listadoEntradas, this);
-        listView.setAdapter(adapter);
-
+        System.out.println("holaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         Intent llegar = getIntent();
         String textoRecogido = llegar.getStringExtra("infoEntrada");
         listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
-
+        adapter = new CustomAdapter(listadoEntradas, this);
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         //referencio al boton
 
         comprar = findViewById(R.id.btCompra);

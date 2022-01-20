@@ -38,10 +38,15 @@ public class CompraEntradas extends AppCompatActivity
 
         primeraEntrada = findViewById(R.id.entrada);
         segundaEntrada = findViewById(R.id.entrada2);
+        segundaEntrada.setText("Fiesta fin de exámenes");
         terceraEntrada = findViewById(R.id.entrada3);
+        terceraEntrada.setText("Redada del chupito");
         cuartaEntrada = findViewById(R.id.entrada4);
+        cuartaEntrada.setText("Fiesta bienvenida del verano");
         quintaEntrada = findViewById(R.id.textView10);
+        quintaEntrada.setText("Fiesta año nuevo");
         sextaEntrada = findViewById(R.id.textView11);
+        sextaEntrada.setText("Locura absoluta");
 
         bt2 = findViewById(R.id.btCompra2);
         bt3 = findViewById(R.id.btCompra3);
@@ -56,6 +61,66 @@ public class CompraEntradas extends AppCompatActivity
             public void onClick(View view)
             {
                 String infoEntrada = primeraEntrada.getText().toString();
+                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                a.putExtra("infoEntrada", infoEntrada);
+                startActivity(a);
+
+            }
+        });
+        bt3.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                String infoEntrada = segundaEntrada.getText().toString();
+                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                a.putExtra("infoEntrada", infoEntrada);
+                startActivity(a);
+
+            }
+        });
+        bt4.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                String infoEntrada = terceraEntrada.getText().toString();
+                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                a.putExtra("infoEntrada", infoEntrada);
+                startActivity(a);
+
+            }
+        });
+        bt5.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                String infoEntrada = cuartaEntrada.getText().toString();
+                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                a.putExtra("infoEntrada", infoEntrada);
+                startActivity(a);
+
+            }
+        });
+        bt6.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                String infoEntrada = quintaEntrada.getText().toString();
+                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                a.putExtra("infoEntrada", infoEntrada);
+                startActivity(a);
+
+            }
+        });
+        bt7.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                String infoEntrada = sextaEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
