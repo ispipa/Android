@@ -34,7 +34,8 @@
             <TableRow
                 android:id="@+id/copa0"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -111,7 +112,8 @@
             <TableRow
                 android:id="@+id/copa1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -188,7 +190,8 @@
             <TableRow
                 android:id="@+id/copa2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -265,7 +268,8 @@
             <TableRow
                 android:id="@+id/copa3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -342,7 +346,8 @@
             <TableRow
                 android:id="@+id/copa4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -419,7 +424,8 @@
             <TableRow
                 android:id="@+id/copa5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -496,7 +502,8 @@
             <TableRow
                 android:id="@+id/copa6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -573,7 +580,8 @@
             <TableRow
                 android:id="@+id/copa7"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -650,7 +658,8 @@
             <TableRow
                 android:id="@+id/copa8"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -727,7 +736,8 @@
             <TableRow
                 android:id="@+id/copa9"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -804,7 +814,8 @@
             <TableRow
                 android:id="@+id/copa10"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -881,7 +892,8 @@
             <TableRow
                 android:id="@+id/copa11"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -958,7 +970,8 @@
             <TableRow
                 android:id="@+id/copa12"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1035,7 +1048,8 @@
             <TableRow
                 android:id="@+id/copa13"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1112,7 +1126,8 @@
             <TableRow
                 android:id="@+id/copa14"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1189,7 +1204,8 @@
             <TableRow
                 android:id="@+id/copa15"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1266,7 +1282,8 @@
             <TableRow
                 android:id="@+id/copa16"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1343,7 +1360,8 @@
             <TableRow
                 android:id="@+id/copa17"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1420,7 +1438,8 @@
             <TableRow
                 android:id="@+id/copa18"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1497,7 +1516,8 @@
             <TableRow
                 android:id="@+id/copa19"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1574,7 +1594,8 @@
             <TableRow
                 android:id="@+id/copa20"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1651,7 +1672,8 @@
             <TableRow
                 android:id="@+id/copa21"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1728,7 +1750,8 @@
             <TableRow
                 android:id="@+id/copa22"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1805,7 +1828,8 @@
             <TableRow
                 android:id="@+id/copa23"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1882,7 +1906,8 @@
             <TableRow
                 android:id="@+id/copa24"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
@@ -1959,7 +1984,8 @@
             <TableRow
                 android:id="@+id/copa25"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondo_r">
 
                 <Space
                     android:layout_width="10dp"
