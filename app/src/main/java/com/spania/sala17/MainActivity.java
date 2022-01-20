@@ -34,7 +34,7 @@ EditText pss;
         hola.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent a = new Intent(MainActivity.this, Registros.class);
+                Intent a = new Intent(MainActivity.this, PaymentActivity.class);
                 startActivity(a);
             }
         });
