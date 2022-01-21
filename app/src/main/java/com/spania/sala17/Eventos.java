@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Eventos extends AppCompatActivity
+public class  Eventos extends AppCompatActivity
 {
     Button comprar;
     Button retornar;
@@ -33,7 +33,7 @@ public class Eventos extends AppCompatActivity
         ListView listView = findViewById(R.id.listView);
         //listadoEntradas.add(new Entrada("Barceló 23 de Marzo", R.drawable.pari));
 
-        System.out.println("holaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
         Intent llegar = getIntent();
         String textoRecogido = llegar.getStringExtra("infoEntrada");
         listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));

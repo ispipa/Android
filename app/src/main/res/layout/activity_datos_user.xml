@@ -38,7 +38,83 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="349dp"
-        android:layout_height="210dp"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        android:layout_height="225dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +127,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Mis Copas / Comprar"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Mis Copas / Comprar" />
 
@@ -60,6 +138,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Mis Eventos / Comprar"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Mis Eventos / Comprar" />
 
@@ -69,6 +149,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Night Tinder"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Night Tinder" />
 
@@ -78,6 +160,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Canción Actual ( only VIP )"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Canción Actual ( only VIP )" />
     </LinearLayout>
