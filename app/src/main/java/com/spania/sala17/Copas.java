@@ -10,11 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class Copas extends AppCompatActivity {
 TextView cal;
@@ -55,7 +52,7 @@ ImageView cub;
         }
     }
     public void pagar(View v){
-        Intent i = new Intent(this,codigoqr.class);
+        Intent i = new Intent(this, Codigoqr.class);
         if(copa >= 1){
             i.putExtra("message","RonCola =  " + copa + "\n" + total);
         }else{

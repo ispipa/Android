@@ -3,6 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/datos"
+        android:title="Inicio" />
+    <item
         android:id="@+id/copas"
         android:icon="@android:drawable/presence_video_online"
         android:title="Copas" />

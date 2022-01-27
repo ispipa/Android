@@ -10,13 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sala17">
         <activity
+            android:name=".OpcionesCompra"
+            android:exported="true" />
+        <activity
+            android:name=".PaganiniEntradas"
+            android:exported="false" />
+        <activity
+            android:name=".CompraEntradas"
+            android:exported="false" />
+        <activity
             android:name=".DatosUser"
             android:exported="true" />
         <activity
             android:name=".Seleccionador"
             android:exported="false" />
         <activity
-            android:name=".codigoqr"
+            android:name=".Codigoqr"
             android:exported="false" />
         <activity
             android:name=".Music"

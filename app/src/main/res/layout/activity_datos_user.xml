@@ -21,22 +21,100 @@
 
     <TextView
         android:id="@+id/bienvenida"
-        android:layout_width="266dp"
-        android:layout_height="47dp"
+        android:layout_width="290dp"
+        android:layout_height="66dp"
+        android:fontFamily="@font/bangers"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagenUser"
-        app:layout_constraintVertical_bias="0.058"
+        app:layout_constraintVertical_bias="0.13"
         tools:text="Bienvenido, Carlos!" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="349dp"
-        android:layout_height="210dp"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        android:layout_height="225dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,11 +122,13 @@
         app:layout_constraintTop_toBottomOf="@+id/bienvenida">
 
         <Button
-            android:id="@+id/btCopas"
+            android:id="@+id/btCompra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Mis Copas / Comprar"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Mis Copas / Comprar" />
 
@@ -58,6 +138,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Mis Eventos / Comprar"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Mis Eventos / Comprar" />
 
@@ -67,6 +149,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Night Tinder"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Night Tinder" />
 
@@ -76,6 +160,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
             android:text="Canción Actual ( only VIP )"
+            android:fontFamily="@font/bangers"
+            android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Canción Actual ( only VIP )" />
     </LinearLayout>
