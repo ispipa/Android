@@ -19,7 +19,7 @@
         android:layout_height="134dp"
         android:background="@drawable/styletxtview"
         android:fontFamily="@font/bangers"
-        android:text="TextView"
+        android:text="Compra entradas!!"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
