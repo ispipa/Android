@@ -8,17 +8,46 @@
     tools:context=".PaganiniEntradas">
 
     <TextView
-        android:id="@+id/recepcion"
-        android:layout_width="230dp"
-        android:layout_height="88dp"
+        android:id="@+id/vipOno"
+        android:layout_width="155dp"
+        android:layout_height="83dp"
+        android:fontFamily="@font/bangers"
         android:text="TextView"
         android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.784"
+        app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.149" />
+        app:layout_constraintVertical_bias="0.45" />
+
+    <TextView
+        android:id="@+id/leureleh"
+        android:layout_width="155dp"
+        android:layout_height="83dp"
+        android:fontFamily="@font/bangers"
+        android:text="TextView"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73" />
+
+    <TextView
+        android:id="@+id/recepcion"
+        android:layout_width="352dp"
+        android:layout_height="141dp"
+        android:fontFamily="@font/bangers"
+        android:text="TextView"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.283"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.106" />
 
     <TextView
         android:id="@+id/textoEleccion"
@@ -29,42 +58,49 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/recepcion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065" />
+
+    <TextView
+        android:id="@+id/textoEleccion2"
+        android:layout_width="221dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="176dp"
+        android:gravity="left"
+        android:text="Entrada VIP?"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/vipOno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textoFecha"
+        android:id="@+id/textoEleccion3"
         android:layout_width="221dp"
         android:layout_height="43dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="324dp"
         android:gravity="left"
-        android:text="Fecha de evento: "
+        android:text="Precio:"
         android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/leureleh"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recepcion" />
-
-    <TextView
-        android:id="@+id/fecha"
-        android:layout_width="221dp"
-        android:layout_height="43dp"
-        android:gravity="left"
-        android:text="TextView"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoFecha" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#0054BA"
         android:text="Stripe"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recepcion"
-        app:layout_constraintVertical_bias="0.514" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

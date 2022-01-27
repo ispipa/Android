@@ -52,6 +52,8 @@ public class CustomAdapter extends BaseAdapter
         txtNombre.setText(entradas.get(i).descipción);
         ImageView imagen = viewInflado.findViewById(R.id.imagen);
         imagen.setImageResource(entradas.get(i).getImg());
+        TextView txtVip = viewInflado.findViewById(R.id.vip);
+        txtVip.setText(entradas.get(i).vip);
 
         return viewInflado;
     }

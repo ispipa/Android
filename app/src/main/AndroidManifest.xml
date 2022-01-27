@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sala17">
         <activity
+            android:name=".OpcionesCompra"
+            android:exported="true" />
+        <activity
             android:name=".PaganiniEntradas"
             android:exported="false" />
         <activity

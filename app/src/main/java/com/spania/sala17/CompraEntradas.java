@@ -37,6 +37,7 @@ public class CompraEntradas extends AppCompatActivity
         Intent i = getIntent();
 
         primeraEntrada = findViewById(R.id.entrada);
+        primeraEntrada.setText("Chill en Badulaque");
         segundaEntrada = findViewById(R.id.entrada2);
         segundaEntrada.setText("Fiesta fin de exámenes");
         terceraEntrada = findViewById(R.id.entrada3);
@@ -61,7 +62,7 @@ public class CompraEntradas extends AppCompatActivity
             public void onClick(View view)
             {
                 String infoEntrada = primeraEntrada.getText().toString();
-                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
 
@@ -73,7 +74,7 @@ public class CompraEntradas extends AppCompatActivity
             public void onClick(View view)
             {
                 String infoEntrada = segundaEntrada.getText().toString();
-                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
 
@@ -85,7 +86,7 @@ public class CompraEntradas extends AppCompatActivity
             public void onClick(View view)
             {
                 String infoEntrada = terceraEntrada.getText().toString();
-                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
 
@@ -97,7 +98,7 @@ public class CompraEntradas extends AppCompatActivity
             public void onClick(View view)
             {
                 String infoEntrada = cuartaEntrada.getText().toString();
-                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
 
@@ -109,7 +110,7 @@ public class CompraEntradas extends AppCompatActivity
             public void onClick(View view)
             {
                 String infoEntrada = quintaEntrada.getText().toString();
-                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
 
@@ -121,7 +122,7 @@ public class CompraEntradas extends AppCompatActivity
             public void onClick(View view)
             {
                 String infoEntrada = sextaEntrada.getText().toString();
-                Intent a = new Intent(CompraEntradas.this, PaganiniEntradas.class);
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
 

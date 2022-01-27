@@ -36,7 +36,8 @@ public class  Eventos extends AppCompatActivity
 
         Intent llegar = getIntent();
         String textoRecogido = llegar.getStringExtra("infoEntrada");
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari));
+        String vipRecogido = llegar.getStringExtra("vipSI");
+        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari, vipRecogido));
         adapter = new CustomAdapter(listadoEntradas, this);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
