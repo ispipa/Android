@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@drawable/gradient_background"
     tools:context=".Eventos">
 
     <ListView
@@ -25,7 +25,6 @@
         android:fontFamily="@font/bangers"
         android:gravity="center"
         android:text="Mis entradas:"
-        android:textColor="@color/zxing_possible_result_points"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +39,7 @@
         android:layout_width="267dp"
         android:layout_height="60dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#ffbd21"
+        android:backgroundTint="#6C6D6E"
         android:text="Comprar"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
