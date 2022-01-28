@@ -20,6 +20,8 @@ public class CompraEntradas extends AppCompatActivity
     TextView cuartaEntrada;
     TextView quintaEntrada;
     TextView sextaEntrada;
+    TextView septimaEntrada;
+    TextView octavaEntrada;
 
     Button bt2;
     Button bt3;
@@ -48,6 +50,10 @@ public class CompraEntradas extends AppCompatActivity
         quintaEntrada.setText("Fiesta año nuevo");
         sextaEntrada = findViewById(R.id.textView11);
         sextaEntrada.setText("Locura absoluta");
+        septimaEntrada = findViewById(R.id.textView12);
+        septimaEntrada.setText("Back to the kalimotxo");
+        octavaEntrada = findViewById(R.id.textView13);
+        octavaEntrada.setText("Stand up cubata");
 
         bt2 = findViewById(R.id.btCompra2);
         bt3 = findViewById(R.id.btCompra3);

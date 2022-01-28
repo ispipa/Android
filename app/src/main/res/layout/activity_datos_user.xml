@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@drawable/fondos"
     tools:context=".DatosUser">
 
     <ImageView
         android:id="@+id/imagenUser"
-        android:layout_width="168dp"
-        android:layout_height="144dp"
+        android:layout_width="219dp"
+        android:layout_height="165dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.137"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/alex"
+        tools:srcCompat="@drawable/alex" />
 
     <TextView
         android:id="@+id/bienvenida"
@@ -25,7 +26,6 @@
         android:layout_height="66dp"
         android:fontFamily="@font/bangers"
         android:gravity="center"
-        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,8 +126,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#0054BA"
-            android:text="Mis Copas / Comprar"
             android:fontFamily="@font/bangers"
+            android:text="Mis Copas / Comprar"
             android:textSize="20dp"
             app:cornerRadius="20dp"
             tools:text="Mis Copas / Comprar" />
