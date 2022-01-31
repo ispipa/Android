@@ -24,7 +24,7 @@ public class DatosUser extends AppCompatActivity
 
         //aqui vuelvo de la seccion de eventos
         Intent volverAtras = getIntent();
-        Intent retornoMenu = getIntent();
+        //Intent retornoMenu = getIntent();
 
         btTinder = findViewById(R.id.btTinder);
         btEventos = findViewById(R.id.btEventos);

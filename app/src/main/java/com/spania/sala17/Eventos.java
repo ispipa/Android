@@ -43,8 +43,8 @@ public class  Eventos extends AppCompatActivity
         adapter.notifyDataSetChanged();
         //referencio al boton
 
+        //retornar = findViewById();
         comprar = findViewById(R.id.btCompra);
-        retornar = findViewById(R.id.retorno);
 
         //voy a dar funciones al boton
         comprar.setOnClickListener(new View.OnClickListener()
@@ -57,7 +57,7 @@ public class  Eventos extends AppCompatActivity
             }
         });
 
-        retornar.setOnClickListener(new View.OnClickListener()
+        /*retornar.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -65,7 +65,7 @@ public class  Eventos extends AppCompatActivity
                 Intent volverAtras = new Intent(Eventos.this, DatosUser.class);
                 startActivity(volverAtras);
             }
-        });
+        });*/
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)

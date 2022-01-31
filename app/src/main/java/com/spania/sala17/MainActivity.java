@@ -4,12 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -18,6 +25,7 @@ public class MainActivity extends AppCompatActivity
     EditText pss;
     String nombre;
     Button btRegistro;
+    String letra;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -26,6 +34,13 @@ public class MainActivity extends AppCompatActivity
         email = findViewById(R.id.email);
         pss = findViewById(R.id.password);
         btRegistro = findViewById(R.id.reg);
+
+        TextView tvMultiColor = (TextView) findViewById(R.id.sala);
+        Spannable wordToSpan = new SpannableString("Sala 17");
+        wordToSpan.setSpan(new ForegroundColorSpan(Color.RED), 0,2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        wordToSpan.setSpan(new ForegroundColorSpan(Color.RED), 4,7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        wordToSpan.setSpan(new ForegroundColorSpan(Color.YELLOW),2 ,5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvMultiColor.setText(wordToSpan);
         //forgot();
         btRegistro.setOnClickListener(new View.OnClickListener()
         {

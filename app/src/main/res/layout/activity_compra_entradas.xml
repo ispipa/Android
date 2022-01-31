@@ -4,33 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@drawable/gradient_background"
     tools:context=".CompraEntradas">
+
+    <!--android:textColor="@color/zxing_possible_result_points"-->
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="395dp"
-        android:layout_height="58dp"
+        android:layout_width="397dp"
+        android:layout_height="66dp"
         android:fontFamily="@font/bangers"
         android:gravity="center"
         android:text="Próximamente en Sala 17 ..."
-        android:textColor="@color/zxing_possible_result_points"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029"
+        app:layout_constraintVertical_bias="0.009"
         tools:text="Próximamente en Sala 17 ..." />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="406dp"
-        android:layout_height="266dp"
+        android:layout_height="400dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,7 +60,7 @@
                     android:id="@+id/btCompra2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#0054BA"
+                    android:backgroundTint="#6C6D6E"
                     android:text="Comprar"
                     app:cornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -87,7 +87,7 @@
                     android:id="@+id/btCompra3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#0054BA"
+                    android:backgroundTint="#6C6D6E"
                     android:text="Comprar"
                     app:cornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -114,7 +114,7 @@
                     android:id="@+id/btCompra4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#0054BA"
+                    android:backgroundTint="#6C6D6E"
                     android:text="Comprar"
                     app:cornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +142,7 @@
                     android:id="@+id/btCompra5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#0054BA"
+                    android:backgroundTint="#6C6D6E"
                     android:text="Comprar"
                     app:cornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -168,7 +168,7 @@
                     android:id="@+id/btCompra6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#0054BA"
+                    android:backgroundTint="#6C6D6E"
                     android:text="Comprar"
                     app:cornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -194,7 +194,59 @@
                     android:id="@+id/btCompra7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#0054BA"
+                    android:backgroundTint="#6C6D6E"
+                    android:text="Comprar"
+                    app:cornerRadius="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+                    tools:text="Comprar" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="133dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/styletxtview"
+                    android:fontFamily="@font/bangers"
+                    android:text="TextView"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btCompra8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#6C6D6E"
+                    android:text="Comprar"
+                    app:cornerRadius="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+                    tools:text="Comprar" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="133dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/styletxtview"
+                    android:fontFamily="@font/bangers"
+                    android:text="TextView"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btCompra9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#6C6D6E"
                     android:text="Comprar"
                     app:cornerRadius="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -206,14 +258,5 @@
         </TableLayout>
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="411dp"
-        android:layout_height="175dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:srcCompat="@drawable/pari" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
