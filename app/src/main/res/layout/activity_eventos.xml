@@ -22,16 +22,16 @@
         android:id="@+id/textView"
         android:layout_width="237dp"
         android:layout_height="65dp"
+        android:layout_marginBottom="15dp"
         android:fontFamily="@font/bangers"
         android:gravity="center"
         android:text="Mis entradas:"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029"
         tools:text="Mis entradas:" />
 
     <Button
@@ -47,17 +47,4 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Comprar" />
 
-    <Button
-        android:id="@+id/retorno"
-        android:layout_width="61dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="32dp"
-        android:background="@android:drawable/ic_menu_revert"
-        android:backgroundTint="#ffbd21"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.39"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
