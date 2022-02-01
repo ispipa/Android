@@ -18,7 +18,7 @@ public class codigoqr extends AppCompatActivity {
 TextView ver;
 ImageView codigo;
     Intent i;
-    String vere;
+    String vere="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +36,15 @@ ImageView codigo;
                 }
             }
     private void obtenerdato(){
-        for (int k = 0; k < 25; k++) {
-            i = getIntent();
-            if (i.getStringExtra("message" + k) != null){
-                vere += i.getStringExtra("message"+k);
+
+           i = getIntent();
+        for (int j = 0; j < 26; j++) {
+            if (i.getStringExtra("cod"+j).equals("si")){
+                vere+=i.getStringExtra("nombre"+j)+" = ";
+                vere+=i.getStringExtra("cantidad"+j)+"\n";
             }
-
         }
-
+            vere += "\n"+"Total  "+i.getStringExtra("total")+" €";
     }
     }
 

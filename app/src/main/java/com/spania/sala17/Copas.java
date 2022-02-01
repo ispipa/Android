@@ -14,9 +14,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+
 import com.spania.sala17.interfaces.ConsultaApi;
 import com.spania.sala17.models.Bebida;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ Button pagar;
 ImageView []fotocopa= new ImageView[26];
     int total;
     int copa = 0;
-String [] id={"calcopa","nomcopa","sum","rest"};
+String [] id={"calcopa","nomcopa","sum","rest","fotocopa"};
 String listanombre[]=new String[26];
 int listaprecio[]=new int[26];
 int resulcopa[]=new int[26];
@@ -48,7 +49,6 @@ String img[]=new String[26];
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_copas);
         pagar = findViewById(R.id.button);
-        fotocopa[0]=findViewById(R.id.fotocopa0);
         autofinbyid();
        fined();
     }
@@ -71,6 +71,9 @@ String img[]=new String[26];
                         break;
                     case 3:
                         rest[k]=findViewById(temp);
+                        break;
+                    case 4:
+                        fotocopa[k]=findViewById(temp);
                         break;
                 }
             }
@@ -103,11 +106,6 @@ String img[]=new String[26];
     }
     //boton total con la suma total de las bebidas
     private void total(){
-
-        /*for (int i = 0; i < img.length; i++) {
-            System.out.println(img[i]);
-            //Glide.with(Copas.this).load(img[i]).into(fotocopa[i]);
-        }*/
         total=0;
         for (int i = 0; i < resulcopa.length; i++) {
             total+=resulcopa[i];
@@ -119,14 +117,14 @@ String img[]=new String[26];
         Intent i = new Intent(this,codigoqr.class);
         for (int k = 0; k < nomcopa.length; k++) {
             if (cant[k]>=1){
-                i.putExtra("message"+k,listanombre[k]+" =  " + cant[k] + "\n" + resulcopa[k]+"€");
+                i.putExtra("cod"+k,"si");
+                i.putExtra("nombre"+k,listanombre[k]);
+                i.putExtra("cantidad"+k,String.valueOf(cant[k]));
+                i.putExtra("total",String.valueOf(total));
+            }else{
+                i.putExtra("cod"+k,"no");
             }
         }
-        /*(copa >= 1){
-            i.putExtra("message","RonCola =  " + copa + "\n" + total);
-        }else{
-
-        }*/
         startActivity(i);
     }
     //recoger las bebidas y su precio de la base de datos.
@@ -134,7 +132,8 @@ String img[]=new String[26];
         long cod;
         for (int i = 0; i < listanombre.length; i++) {
             cod=i+1;
-            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-50-19-152-42.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+            //cambiar baseurl cada vez que la instacia se reinicie
+            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-227-185-237.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
             ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
             Call<Bebida> call = consultaApi.find((cod));
             int finalI = i;
@@ -146,8 +145,7 @@ String img[]=new String[26];
                             Bebida bebida = response.body();
                             nomcopa[finalI].setText(bebida.getNombreBebida());
                             calcopa[finalI].setText("0 x "+String.valueOf(bebida.getPrecio())+" ");
-                            //Glide.with(Copas.this).load(bebida.getImgBebida()).into(fotocopa[finalI]);
-                            System.out.println(bebida.getImgBebida());
+                            Picasso.get().load(bebida.getImgBebida()).into(fotocopa[finalI]);
                             img[finalI]=bebida.getImgBebida();
                             listaprecio[finalI]=bebida.getPrecio();
                             listanombre[finalI]=bebida.getNombreBebida();
@@ -158,13 +156,13 @@ String img[]=new String[26];
                 }
                 @Override
                 public void onFailure(Call<Bebida> call, Throwable t) {
-                    System.out.println(t.toString());
                     Toast.makeText(Copas.this, t.toString(), Toast.LENGTH_LONG).show();
                 }
             });
         }
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

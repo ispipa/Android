@@ -10,14 +10,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 TextView fg;
 EditText user;
 Button log;
 EditText pss;
+ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +30,9 @@ EditText pss;
         user = findViewById(R.id.user);
         log = findViewById(R.id.log);
         pss = findViewById(R.id.Pssw);
+        img=findViewById(R.id.imageView);
         //forgot();
-
+        Picasso.get().load("https://miracomosehace.com/wp-content/uploads/2020/05/hombre-gorra-camara-1.jpg").into(img);
     }
     public void onclick(View v ){
     if(user.getText().toString().equals("user")&&pss.getText().toString().equals("user")){
