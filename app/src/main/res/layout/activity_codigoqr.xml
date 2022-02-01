@@ -8,11 +8,13 @@
 
     <TextView
         android:id="@+id/ver"
-        android:layout_width="298dp"
-        android:layout_height="281dp"
-        android:layout_marginTop="294dp"
-        android:text="TextView"
+        android:layout_width="290dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="304dp"
+        android:text="Seleccione sus bebidas"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,5 +30,36 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ListView
+        android:id="@+id/listacop"
+        android:layout_width="match_parent"
+        android:layout_height="223dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ver" />
+
+    <Button
+        android:id="@+id/salir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="15dp"
+        android:text="salir"
+        app:layout_constraintStart_toStartOf="@+id/listacop"
+        app:layout_constraintTop_toBottomOf="@+id/listacop" />
+
+    <Button
+        android:id="@+id/pedir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="84dp"
+        android:text="Pedir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listacop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

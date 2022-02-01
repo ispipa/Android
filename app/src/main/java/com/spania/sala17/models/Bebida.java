@@ -49,4 +49,11 @@ public class Bebida {
     public void setImgBebida(String imgBebida) {
         this.imgBebida = imgBebida;
     }
+
+    public Bebida(long id_bebida, String nombreBebida, int precio, String imgBebida) {
+        this.id_bebida = id_bebida;
+        this.nombreBebida = nombreBebida;
+        this.precio = precio;
+        this.imgBebida = imgBebida;
+    }
 }

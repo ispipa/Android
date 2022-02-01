@@ -10,16 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.spania.sala17.interfaces.ConsultaApi;
 import com.spania.sala17.models.Bebida;
+import com.spania.sala17.models.Usuario;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+
 
 
 import retrofit2.Call;
@@ -43,12 +43,18 @@ int listaprecio[]=new int[26];
 int resulcopa[]=new int[26];
 int cant[]=new int[26];
 String img[]=new String[26];
+String nomfoto[]=new String[26];
+Retrofit retrofit;
+ConsultaApi consultaApi;
+long idUser=27;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_copas);
         pagar = findViewById(R.id.button);
+        retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        consultaApi = retrofit.create(ConsultaApi.class);
         autofinbyid();
        fined();
     }
@@ -114,28 +120,52 @@ String img[]=new String[26];
     }
     //pagar y pasar datos a la otra activiti
     public void pagar(View v){
+        long id=0;
+        String auxpedido=" pepe";
+        String si="si";
         Intent i = new Intent(this,codigoqr.class);
         for (int k = 0; k < nomcopa.length; k++) {
-            if (cant[k]>=1){
-                i.putExtra("cod"+k,"si");
-                i.putExtra("nombre"+k,listanombre[k]);
-                i.putExtra("cantidad"+k,String.valueOf(cant[k]));
-                i.putExtra("total",String.valueOf(total));
-            }else{
-                i.putExtra("cod"+k,"no");
+            /*if (cant[k]>=1){
+                auxpedido += String.valueOf(k);
+                auxpedido += String.valueOf(cant[k]+"\n");
+            }*/
+            if (cant[k]>0) {
+                i.putExtra("si"+k,si);
+                i.putExtra("idB"+k, String.valueOf(k));
+                i.putExtra("catb"+k, String.valueOf(cant[k]));
+
             }
         }
+        //*****************idUsuario
+        i.putExtra("idUser", String.valueOf(idUser));
+        //insertar(idUser,auxpedido);
         startActivity(i);
     }
+
+
+    //Insertar pedido en ususario
+    /*private void insertar(Long id,String pedido){
+        Call<Usuario>call=consultaApi.insertarbebida(id,pedido);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Copas.this, "Comprado", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                Toast.makeText(Copas.this, "Error intentelo de nuevo", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }*/
     //recoger las bebidas y su precio de la base de datos.
     private void fined(){
         long cod;
         for (int i = 0; i < listanombre.length; i++) {
             cod=i+1;
             //cambiar baseurl cada vez que la instacia se reinicie
-            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-227-185-237.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
-            ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
-            Call<Bebida> call = consultaApi.find((cod));
+            Call<Bebida> call = consultaApi.findB((cod));
             int finalI = i;
             call.enqueue(new Callback<Bebida>() {
                 @Override
@@ -149,6 +179,7 @@ String img[]=new String[26];
                             img[finalI]=bebida.getImgBebida();
                             listaprecio[finalI]=bebida.getPrecio();
                             listanombre[finalI]=bebida.getNombreBebida();
+                            nomfoto[finalI]=bebida.getImgBebida();
                         }
                     } catch (Exception ex) {
                         Toast.makeText(Copas.this, "pepe", Toast.LENGTH_SHORT).show();
@@ -160,7 +191,6 @@ String img[]=new String[26];
                 }
             });
         }
-
     }
 
 
