@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                /*Intent registrarse = new Intent(MainActivity.this, Registro.class);
-                startActivity(registrarse);*/
+                Intent registrarse = new Intent(MainActivity.this, Registros.class);
+                startActivity(registrarse);
             }
         });
 
@@ -69,6 +69,4 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         String nombreUser = nombre;
     }
-//prueba de hacer merges
-    //confirmacion de funcionamiento de merges
 }
