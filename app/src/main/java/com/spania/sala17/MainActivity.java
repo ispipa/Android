@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -69,4 +71,6 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         String nombreUser = nombre;
     }
+//prueba de hacer merges
+    //confirmacion de funcionamiento de merges
 }

@@ -31,6 +31,11 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
     implementation 'com.lorentzos.swipecards:library:1.0.9@aar'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.daprlabs.aaron:cardstack:0.3.1-beta0'
+
+
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
@@ -40,6 +45,7 @@ dependencies {
     implementation'com.squareup.okhttp3:okhttp:4.4.0'
     //
     implementation 'io.openharmony.tpc.thirdlib:Swipecards:1.0.2'
+
     implementation 'com.google.firebase:firebase-inappmessaging-display:17.2.0'
     implementation 'com.google.guava:guava:27.0.1-android'
     implementation 'com.ejlchina:okhttps:3.4.2'
