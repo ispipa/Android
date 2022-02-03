@@ -7,6 +7,44 @@
     android:background="@drawable/styletxtview"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/Pssw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user" />
+
+    <TextView
+        android:id="@+id/txtfg"
+        android:layout_width="80dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="100dp"
+        android:textColor="#FB0000"
+        app:layout_constraintBottom_toTopOf="@+id/log"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pssw"
+        app:layout_constraintVertical_bias="0.396"
+        tools:text="FGT" />
+
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="98dp"
@@ -28,22 +66,6 @@
         android:backgroundTint="#929191"
         android:onClick="onclick"
         android:text="Login"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/reg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
-    <Button
-        android:id="@+id/reg"
-        android:layout_width="216dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="#929191"
-        android:text="Registro"
-        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"

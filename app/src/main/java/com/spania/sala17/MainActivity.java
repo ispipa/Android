@@ -4,13 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -71,4 +65,6 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         String nombreUser = nombre;
     }
+//prueba de hacer merges
+    //confirmacion de funcionamiento de merges
 }
