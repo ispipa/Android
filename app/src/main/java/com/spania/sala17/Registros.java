@@ -2,6 +2,7 @@ package com.spania.sala17;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +40,9 @@ public class Registros extends AppCompatActivity
             {
                 datosObtenidos.add(datosUsuario[i].getText().toString());
                 System.out.println(datosObtenidos.get(i));
+                Intent pasarAdatos = new Intent(Registros.this, DatosUser.class);
+                pasarAdatos.putExtra("nombreUser", datosObtenidos.get(0));
+                startActivity(pasarAdatos);
             }
             else
             {

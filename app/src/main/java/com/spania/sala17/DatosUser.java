@@ -24,14 +24,25 @@ public class DatosUser extends AppCompatActivity
 
         //aqui vuelvo de la seccion de eventos
         Intent volverAtras = getIntent();
-        //Intent retornoMenu = getIntent();
+        Intent registros = getIntent();
+        String nombreRegistro = registros.getStringExtra("nombreUser");
 
         btTinder = findViewById(R.id.btTinder);
         btEventos = findViewById(R.id.btEventos);
         bienvenida = findViewById(R.id.bienvenida);
         Intent j = getIntent();
         welcome = j.getStringExtra("nombreUser");
-        bienvenida.setText("Willkommen, " + welcome + "!");
+
+        //si viene de registros seteo un texto al textView, si viene de login seteo otro
+        if(!nombreRegistro.equals(""))
+        {
+            bienvenida.setText("Willkommen, " + nombreRegistro + "!");
+        }
+        else
+            {
+                bienvenida.setText("Willkommen, " + welcome + "!");
+            }
+
         //Pasar de esta activity a la del Tinder
         btTinder.setOnClickListener(new View.OnClickListener()
         {
