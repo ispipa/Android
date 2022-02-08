@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +19,7 @@ public class Registros extends AppCompatActivity
     ArrayList<String> datosObtenidos = new ArrayList<>();
     Button registro;
     TextView sing;
-
+    int cont = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,32 +31,7 @@ public class Registros extends AppCompatActivity
         sing = findViewById(R.id.singn);
         //------------------------------------------------
         onClik();
-
         //------------------------------------------------
-    }
-    private void comprobacion()
-    {
-        for (int i = 0; i < datosUsuario.length; i++)
-        {
-            datosObtenidos.add(datosUsuario[i].getText().toString());
-            //System.out.println(datosObtenidos.get(i));
-
-
-                   if(datosObtenidos.size() <= 3)
-                        {
-                            Toast.makeText(Registros.this,"Por favor, rellene todos los campos",Toast.LENGTH_SHORT).show();
-                            datosObtenidos.clear();
-                            System.out.println(datosObtenidos.size());
-                        }
-                   else
-                       {
-                           //System.out.println(datosObtenidos.get(i));
-                           Intent pasarAdatos = new Intent(Registros.this, DatosUser.class);
-                           pasarAdatos.putExtra("nombreUser", datosObtenidos.get(0));
-                           startActivity(pasarAdatos);
-                       }
-        }
-
     }
     private void onClik()
     {
@@ -67,12 +40,36 @@ public class Registros extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                comprobacion();
+                if(validarDatos(datosUsuario))
+                {
+                    Toast.makeText(Registros.this,"Por favor, rellene todos los campos",Toast.LENGTH_SHORT).show();
+                }
+                else
+                    {
+                        Intent pasarAdatos = new Intent(Registros.this, DatosUser.class);
+                        pasarAdatos.putExtra("nombreUser", datosObtenidos.get(0));
+                        startActivity(pasarAdatos);
+                    }
             }
         });
     }
-    public void rellenar()
-{
-
-}
+    public boolean validarDatos(EditText[] campos)
+    {
+        for (int i = 0; i < campos.length; i++)
+        {
+            String cadena = campos[i].getText().toString();
+            if (cadena.trim().isEmpty())
+            {
+                cont++;
+                return true;
+            }
+            else
+                {
+                    cont=0;
+                    datosObtenidos.clear();
+                }
+        }
+        datosObtenidos.add(datosUsuario[cont].getText().toString());
+        return  false;
+    }
 }
