@@ -4,9 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Bebida {
-    @SerializedName("id_bebida")
+    @SerializedName("idBebida")
     @Expose
-    private long id_bebida;
+    private long idBebida;
     @SerializedName("nombreBebida")
     @Expose
     private String nombreBebida;
@@ -18,12 +18,13 @@ public class Bebida {
     @Expose
     private String imgBebida;
 
+
     public long getId_bebida() {
-        return id_bebida;
+        return idBebida;
     }
 
     public void setId_bebida(long id_bebida) {
-        this.id_bebida = id_bebida;
+        this.idBebida = id_bebida;
     }
 
     public String getNombreBebida() {
@@ -50,10 +51,5 @@ public class Bebida {
         this.imgBebida = imgBebida;
     }
 
-    public Bebida(long id_bebida, String nombreBebida, int precio, String imgBebida) {
-        this.id_bebida = id_bebida;
-        this.nombreBebida = nombreBebida;
-        this.precio = precio;
-        this.imgBebida = imgBebida;
-    }
+
 }

@@ -11,21 +11,23 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ConsultaApi {
+    @Headers("user-key: dXNlcjoxMjM0")
     @GET("bebida/idBebida/{idBebida}")
     public Call<Bebida> findB(@Path("idBebida")Long idBebida);
 
     @GET("usuario/idUsuario/{idUsuario}")
     public Call<Usuario> findUser(@Path("idUsuario")Long idUsuario);
 
-
     @FormUrlEncoded
-    @PUT("usuario/pedido/{pedido}")
-    Call<Usuario> insertarbebida(@Path("id")Long id, @Field("pedido") String pedido);
+    @PUT("usuario/idUsuarioPedido/{idUsuario}")
+    Call<Usuario> insertBebida(@Path("idUsuario")Long idUsuario,@Field("pedido")String pedido);
 
 
 
