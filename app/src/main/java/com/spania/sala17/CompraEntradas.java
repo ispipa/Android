@@ -29,6 +29,8 @@ public class CompraEntradas extends AppCompatActivity
     Button bt5;
     Button bt6;
     Button bt7;
+    Button bt8;
+    Button bt9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -61,6 +63,8 @@ public class CompraEntradas extends AppCompatActivity
         bt5 = findViewById(R.id.btCompra5);
         bt6 = findViewById(R.id.btCompra6);
         bt7 = findViewById(R.id.btCompra7);
+        bt8 = findViewById(R.id.btCompra8);
+        bt9 = findViewById(R.id.btCompra9);
 
         bt2.setOnClickListener(new View.OnClickListener()
         {
@@ -132,6 +136,28 @@ public class CompraEntradas extends AppCompatActivity
                 a.putExtra("infoEntrada", infoEntrada);
                 startActivity(a);
 
+            }
+        });
+        bt8.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                String infoEntrada = septimaEntrada.getText().toString();
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
+                a.putExtra("infoEntrada", infoEntrada);
+                startActivity(a);
+            }
+        });
+        bt9.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                String infoEntrada = octavaEntrada.getText().toString();
+                Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
+                a.putExtra("infoEntrada", infoEntrada);
+                startActivity(a);
             }
         });
     }
