@@ -31,6 +31,8 @@ public class PaganiniEntradas extends AppCompatActivity
         String vipSI = i.getStringExtra("booleano");
         String precio = i.getStringExtra("precio");
 
+        int precioPagos = Integer.parseInt(precio);
+
         if(vipSI.equals("true"))
         {
             vipSI = "VIP: SI";
