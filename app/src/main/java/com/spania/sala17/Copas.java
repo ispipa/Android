@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,9 +44,9 @@ public class Copas extends AppCompatActivity {
     int cant[]=new int[26];
     int idcopa[]=new int[26];
     String img[]=new String[26];
-    Boolean compra;
-    Long idUser= Long.valueOf(27);
-
+    boolean compra;
+    boolean pedirB=false;
+    Long idUser;
     List<Integer> limitcant=new ArrayList<>();
     List<Integer> idcant=new ArrayList<>();
     @Override
@@ -55,15 +56,14 @@ public class Copas extends AppCompatActivity {
         pagar = findViewById(R.id.button);
         pedir=findViewById(R.id.pedir1);
         comprar=findViewById(R.id.comprar);
-        //asignacion de limites de sum y res
         comprar.setEnabled(false);
         compra=true;
+        Intent intent=getIntent();
+        String aux=intent.getStringExtra("iduser");
+        idUser= Long.parseLong(aux);
         autofinbyid();
         fined();
         botones();
-        for (int i = 0; i < idcopa.length; i++) {
-            System.out.println(listaprecio[i]);
-        }
     }
     //general----------------------------------------------------------------------------------
     private void botones(){
@@ -127,7 +127,7 @@ public class Copas extends AppCompatActivity {
     //catalogo de las bebidas y su precio de la base de datos.
     private void fined(){
         long cod;
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
         for (int i = 0; i < listanombre.length; i++) {
             cod=i+1;
@@ -169,7 +169,7 @@ public class Copas extends AppCompatActivity {
                         calcopa[i].setText(cant[i]+" x "+listaprecio[i]+" = "+resulcopa[i]+"€");
                     }
                 }
-            }else{
+            }else if(pedirB){
                 if (cant[i]<limitcant.get(i)){
                     if(v.getId()==getResources().getIdentifier(id[2]+i,"id",getPackageName())){
                         resulcopa[i]+=listaprecio[i];
@@ -251,7 +251,7 @@ public class Copas extends AppCompatActivity {
     //comprar bebidas---------------------------------------------------------------------------------------------------------------------------
     //Insertar pedido en ususario
     private void insertar(long id,String pedido){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
         Call<Usuario>call=consultaApi.insertBebida(id,pedido);
         call.enqueue(new Callback<Usuario>() {
@@ -271,7 +271,7 @@ public class Copas extends AppCompatActivity {
     //seleccionar bebidas---------------------------------------------------------------------------------------------------------
     private void fineddatos(long cod)
     {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
         Call<Usuario> call = consultaApi.findUser(cod);
         call.enqueue(new Callback<Usuario>()
@@ -283,31 +283,33 @@ public class Copas extends AppCompatActivity {
                 {
                     Usuario usuario= response.body();
                     String auxpedido=usuario.getPedido();
-                    //obtener cantcopas
-                    int aux=0;
-                    String aux2="";
-                    int aux3=0;
-                    for (int j = 0; j < auxpedido.length(); j++)
-                    {
-                        aux++;
-                        aux2+=auxpedido.charAt(j);
-                        if (aux==2)
+                    if (auxpedido!=null){
+                        //obtener cantcopas
+                        int aux=0;
+                        String aux2="";
+                        int aux3=0;
+                        for (int j = 0; j < auxpedido.length(); j++)
                         {
-                            if (0==aux3%2)
+                            aux++;
+                            aux2+=auxpedido.charAt(j);
+                            if (aux==2)
                             {
-                                idcant.add(Integer.parseInt(aux2.replace(".","")));
+                                if (0==aux3%2)
+                                {
+                                    idcant.add(Integer.parseInt(aux2.replace(".","")));
 
-                            }else
-                            {
-                                limitcant.add(Integer.parseInt(aux2.replace(".","")));
+                                }else
+                                {
+                                    limitcant.add(Integer.parseInt(aux2.replace(".","")));
+                                }
+                                aux3++;
+                                aux=0;
+                                aux2="";
                             }
-                            aux3++;
-                            aux=0;
-                            aux2="";
                         }
+                        pedirB=true;
                     }
                 }
-
             }
             @Override
             public void onFailure(Call<Usuario> call, Throwable t)
@@ -317,42 +319,10 @@ public class Copas extends AppCompatActivity {
         });
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.tinder:
-                Toast.makeText(Copas.this,"Entrando a tinder",Toast.LENGTH_SHORT).show();
-                Intent t = new Intent(this, Tinder.class);
-                startActivity(t);
-                break;
-            case R.id.copas:
-                Intent ma = new Intent(this, MainActivity.class);
-                Toast.makeText(Copas.this, "Entrando a copas", Toast.LENGTH_SHORT).show();
-                startActivity(ma);
-                break;
-            case R.id.eventos:
-                Intent e = new Intent(this,Eventos.class);
-                startActivity(e);
-                Toast.makeText(Copas.this,"Entrando a eventos", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.music:
-                Intent m = new Intent(this,Music.class);
-                startActivity(m);
-                Toast.makeText(Copas.this, "Entrando a Spotify",Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                Toast.makeText(Copas.this,"Reinicie la aplicacion", Toast.LENGTH_LONG).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

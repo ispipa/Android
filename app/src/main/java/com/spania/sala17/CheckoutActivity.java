@@ -49,6 +49,7 @@ public class CheckoutActivity extends AppCompatActivity {
     TextView vipOno;
     String texto;
     String finalVipSI;
+    boolean compra;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -125,6 +126,9 @@ public class CheckoutActivity extends AppCompatActivity {
 
                 //vuelvo a la activity de eventos
                 Intent volver = new Intent(CheckoutActivity.this, Eventos.class);
+                compra = true;
+                String booleanoCompra = String.valueOf(compra);
+                volver.putExtra("boolean", booleanoCompra);
                 volver.putExtra("infoEntrada", texto);
                 volver.putExtra("vipSI", finalVipSI);
                 startActivity(volver);

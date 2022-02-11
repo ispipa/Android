@@ -29,6 +29,9 @@ public interface ConsultaApi {
     @PUT("usuario/idUsuarioPedido/{idUsuario}")
     Call<Usuario> insertBebida(@Path("idUsuario")Long idUsuario,@Field("pedido")String pedido);
 
+    @GET("usuario/emailUsuario/{emailUsuario}")
+    Call<Usuario> findUserEmail(@Path("emailUsuario")String emailUsuario);
+
     @POST("usuario")
     Call<Usuario>insertarDatosUusario(@Field("nombreUsuario")String nombreUsuario,
                                       @Field("apellidoUsuario")String apellidoUsuario,
