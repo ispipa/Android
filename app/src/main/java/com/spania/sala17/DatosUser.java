@@ -15,7 +15,7 @@ public class DatosUser extends AppCompatActivity
     TextView bienvenida;
     String welcome;
     Button btEventos;
-
+    Button btcompra;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,6 +30,7 @@ public class DatosUser extends AppCompatActivity
         btTinder = findViewById(R.id.btTinder);
         btEventos = findViewById(R.id.btEventos);
         bienvenida = findViewById(R.id.bienvenida);
+        btcompra=findViewById(R.id.btCompra);
         Intent j = getIntent();
         welcome = j.getStringExtra("nombreUser");
 
@@ -62,5 +63,13 @@ public class DatosUser extends AppCompatActivity
                 startActivity(a);
             }
         });
+        btcompra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(DatosUser.this, Copas.class);
+                startActivity(a);
+            }
+        });
+
     }
 }
