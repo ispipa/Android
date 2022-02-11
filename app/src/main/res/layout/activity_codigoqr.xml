@@ -8,11 +8,13 @@
 
     <TextView
         android:id="@+id/ver"
-        android:layout_width="298dp"
-        android:layout_height="281dp"
-        android:layout_marginTop="294dp"
-        android:text="TextView"
+        android:layout_width="284dp"
+        android:layout_height="279dp"
+        android:layout_marginTop="304dp"
+        android:text="Seleccione sus bebidas"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,5 +30,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ver"
+        app:layout_constraintTop_toBottomOf="@+id/ver" />
+
+    <Button
+        android:id="@+id/pedirotravez"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver a pedir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ver"
+        app:layout_constraintTop_toBottomOf="@+id/ver" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

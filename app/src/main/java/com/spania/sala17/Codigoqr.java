@@ -6,86 +6,75 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.spania.sala17.interfaces.ConsultaApi;
+import com.spania.sala17.models.Bebida;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Codigoqr extends AppCompatActivity
 {
-TextView ver;
-ImageView codigo;
+    Button pedir,salir;
+
+    TextView ver,cantselect;
+    ImageView codigo;
+    Retrofit retrofit;
+    ConsultaApi consultaApi;
+    String pedido;
+    public static ArrayAdapter<Bebida> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_codigoqr);
-        ver= findViewById(R.id.ver);
+        ver = findViewById(R.id.ver);
         codigo = findViewById(R.id.imageqr);
+        pedir=findViewById(R.id.pedirotravez);
+        salir=findViewById(R.id.menu);
 
-        Intent i = getIntent();
-        String vere = i.getStringExtra("message");
-        ver.setText(vere);
-        try
-        {
-                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                    Bitmap bit = barcodeEncoder.encodeBitmap(ver.getText().toString(), BarcodeFormat.QR_CODE,1250,1250);
-                    codigo.setImageBitmap(bit);
+        retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        consultaApi = retrofit.create(ConsultaApi.class);
+        Intent i=getIntent();
+        //String aux=i.getStringExtra("idUser");
+
+
+        for (int j = 0; j < 26; j++) {
+            pedido=i.getStringExtra("ocupado"+j);
+            if (pedido.equals("si")){
+                ver.setText(i.getStringExtra("nombre"+j)+" X "+i.getStringExtra("cant"+j));
+            }
+            qr();
         }
-        catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        botones();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-    {
-        switch (item.getItemId())
-        {
-            case R.id.datos:
-                Toast.makeText(Codigoqr.this,"Inicio", Toast.LENGTH_SHORT).show();
-                Intent p = new Intent(this, DatosUser.class);
-                startActivity(p);
-                break;
-            case R.id.tinder:
-                Toast.makeText(Codigoqr.this,"Entrando a tinder",Toast.LENGTH_SHORT).show();
-                Intent t = new Intent(this, Tinder.class);
-                startActivity(t);
-                break;
-            case R.id.copas:
-                Intent i = new Intent(this, Copas.class);
-                Toast.makeText(Codigoqr.this, "Entrando a copas", Toast.LENGTH_SHORT).show();
-                startActivity(i);
-                break;
-            case R.id.eventos:
-                Intent e = new Intent(this,Eventos.class);
-                startActivity(e);
-                Toast.makeText(Codigoqr.this,"Entrando a eventos", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.music:
-                Intent m = new Intent(this,Music.class);
-                startActivity(m);
-                Toast.makeText(Codigoqr.this, "Entrando a Spotify",Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                Toast.makeText(Codigoqr.this,"Reinicie la aplicacion", Toast.LENGTH_LONG).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
+    private void botones(){
+        pedir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cantselect.getText();
+            }
+        });
     }
 
+    private void qr(){
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bit = barcodeEncoder.encodeBitmap(ver.getText().toString(), BarcodeFormat.QR_CODE,1250,1250);
+            codigo.setImageBitmap(bit);
+        }catch (Exception e){
+            e.printStackTrace();
+        };
     }
+}
