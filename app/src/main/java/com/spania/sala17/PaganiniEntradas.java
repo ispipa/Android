@@ -14,6 +14,7 @@ public class PaganiniEntradas extends AppCompatActivity
     TextView vipOno;
     TextView leureleh;
     Button btOk;
+    String texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,7 +28,7 @@ public class PaganiniEntradas extends AppCompatActivity
         btOk = findViewById(R.id.btOk);
 
         Intent i = getIntent();
-        String texto = i.getStringExtra("info");
+        texto = i.getStringExtra("info");
         String vipSI = i.getStringExtra("booleano");
         String precio = i.getStringExtra("precio");
 

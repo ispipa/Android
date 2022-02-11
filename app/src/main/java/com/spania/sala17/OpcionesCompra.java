@@ -67,7 +67,7 @@ public class OpcionesCompra extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent pagacion = new Intent(OpcionesCompra.this, PaganiniEntradas.class);
+                Intent pagacion = new Intent(OpcionesCompra.this, CheckoutActivity.class);
                 pagacion.putExtra("precio", precio);
                 pagacion.putExtra("info", info);
                 pagacion.putExtra("booleano", booleano);

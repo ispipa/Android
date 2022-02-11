@@ -45,6 +45,10 @@ public class CheckoutActivity extends AppCompatActivity {
     private String paymentIntentClientSecret;
     private Stripe stripe;
     private TextView amountTextView;
+    TextView recepcion;
+    TextView vipOno;
+    String texto;
+    String finalVipSI;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,32 @@ public class CheckoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
 
         amountTextView = findViewById(R.id.amountTextView);
+        recepcion = findViewById(R.id.recepcion);
+        vipOno = findViewById(R.id.vipOno);
+
+
+
+        Intent i = getIntent();
+        texto = i.getStringExtra("info");
+        String vipSI = i.getStringExtra("booleano");
+        String precio = i.getStringExtra("precio");
+
+        int precioPagos = Integer.parseInt(precio);
+
+        if(vipSI.equals("true"))
+        {
+            vipSI = "VIP: SI";
+        }
+        else
+        {
+            vipSI = "VIP: NO";
+        }
+
+        recepcion.setText(texto);
+        vipOno.setText(vipSI);
+        amountTextView.setText(precio);
+
+        finalVipSI = vipSI;
 
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
@@ -92,6 +122,12 @@ public class CheckoutActivity extends AppCompatActivity {
                 ConfirmPaymentIntentParams confirmParams = ConfirmPaymentIntentParams
                         .createWithPaymentMethodCreateParams(params, paymentIntentClientSecret);
                 stripe.confirmPayment(this, confirmParams);
+
+                //vuelvo a la activity de eventos
+                Intent volver = new Intent(CheckoutActivity.this, Eventos.class);
+                volver.putExtra("infoEntrada", texto);
+                volver.putExtra("vipSI", finalVipSI);
+                startActivity(volver);
             }
         });
     }

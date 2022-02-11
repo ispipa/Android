@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class  Eventos extends AppCompatActivity
 {
     Button comprar;
-    Button retornar;
     public static ArrayList<Entrada> listadoEntradas = new ArrayList<>();
     public static CustomAdapter adapter;
 

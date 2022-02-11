@@ -11,11 +11,96 @@
         android:id="@+id/cardInputWidget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></com.stripe.android.view.CardInputWidget>
+
+    <TextView
+        android:id="@+id/vipOno"
+        android:layout_width="155dp"
+        android:layout_height="83dp"
+        android:fontFamily="@font/bangers"
+        android:text="TextView"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.614" />
+
+    <TextView
+        android:id="@+id/amountTextView"
+        android:layout_width="155dp"
+        android:layout_height="83dp"
+        android:fontFamily="@font/bangers"
+        android:text="TextView"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.876" />
+
+    <TextView
+        android:id="@+id/recepcion"
+        android:layout_width="352dp"
+        android:layout_height="141dp"
+        android:fontFamily="@font/bangers"
+        android:text="TextView"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.276" />
+
+    <TextView
+        android:id="@+id/textoEleccion"
+        android:layout_width="221dp"
+        android:layout_height="43dp"
+        android:gravity="left"
+        android:text="Evento elegido: "
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/recepcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
+
+    <TextView
+        android:id="@+id/textoEleccion2"
+        android:layout_width="221dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="176dp"
+        android:gravity="left"
+        android:text="Entrada VIP?"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/vipOno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826" />
+
+    <TextView
+        android:id="@+id/textoEleccion3"
+        android:layout_width="221dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="508dp"
+        android:gravity="left"
+        android:text="Precio:"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/amountTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/pay_button"
@@ -26,16 +111,5 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/amountTextView"
-        android:layout_width="328dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="256dp"
-        android:gravity="center"
-        android:text="20"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
