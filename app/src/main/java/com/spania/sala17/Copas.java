@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,9 +44,9 @@ public class Copas extends AppCompatActivity {
     int cant[]=new int[26];
     int idcopa[]=new int[26];
     String img[]=new String[26];
-    Boolean compra;
-    Long idUser= Long.valueOf(27);
-
+    boolean compra;
+    boolean pedirB=false;
+    Long idUser;
     List<Integer> limitcant=new ArrayList<>();
     List<Integer> idcant=new ArrayList<>();
     @Override
@@ -55,15 +56,16 @@ public class Copas extends AppCompatActivity {
         pagar = findViewById(R.id.button);
         pedir=findViewById(R.id.pedir1);
         comprar=findViewById(R.id.comprar);
-        //asignacion de limites de sum y res
         comprar.setEnabled(false);
         compra=true;
+        Intent intent=getIntent();
+        String aux=intent.getStringExtra("iduser");
+        idUser= Long.parseLong(aux);
+
         autofinbyid();
         fined();
         botones();
-        for (int i = 0; i < idcopa.length; i++) {
-            System.out.println(listaprecio[i]);
-        }
+
     }
     //general----------------------------------------------------------------------------------
     private void botones(){
@@ -146,6 +148,8 @@ public class Copas extends AppCompatActivity {
                             listaprecio[finalI]=bebida.getPrecio();
                             listanombre[finalI]=bebida.getNombreBebida();
                             idcopa[finalI]=(int)bebida.getId_bebida();
+
+
                         }
                     } catch (Exception ex) {
                         Toast.makeText(Copas.this, "pepe", Toast.LENGTH_SHORT).show();
@@ -169,7 +173,7 @@ public class Copas extends AppCompatActivity {
                         calcopa[i].setText(cant[i]+" x "+listaprecio[i]+" = "+resulcopa[i]+"€");
                     }
                 }
-            }else{
+            }else if(pedirB){
                 if (cant[i]<limitcant.get(i)){
                     if(v.getId()==getResources().getIdentifier(id[2]+i,"id",getPackageName())){
                         resulcopa[i]+=listaprecio[i];
@@ -283,29 +287,34 @@ public class Copas extends AppCompatActivity {
                 {
                     Usuario usuario= response.body();
                     String auxpedido=usuario.getPedido();
-                    //obtener cantcopas
-                    int aux=0;
-                    String aux2="";
-                    int aux3=0;
-                    for (int j = 0; j < auxpedido.length(); j++)
-                    {
-                        aux++;
-                        aux2+=auxpedido.charAt(j);
-                        if (aux==2)
+                    if (auxpedido!=null){
+                        //obtener cantcopas
+                        int aux=0;
+                        String aux2="";
+                        int aux3=0;
+                        for (int j = 0; j < auxpedido.length(); j++)
                         {
-                            if (0==aux3%2)
+                            aux++;
+                            aux2+=auxpedido.charAt(j);
+                            if (aux==2)
                             {
-                                idcant.add(Integer.parseInt(aux2.replace(".","")));
+                                if (0==aux3%2)
+                                {
+                                    idcant.add(Integer.parseInt(aux2.replace(".","")));
 
-                            }else
-                            {
-                                limitcant.add(Integer.parseInt(aux2.replace(".","")));
+                                }else
+                                {
+                                    limitcant.add(Integer.parseInt(aux2.replace(".","")));
+                                }
+                                aux3++;
+                                aux=0;
+                                aux2="";
                             }
-                            aux3++;
-                            aux=0;
-                            aux2="";
                         }
+                        pedirB=true;
                     }
+
+
                 }
 
             }

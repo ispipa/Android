@@ -28,4 +28,7 @@ public interface ConsultaApi {
     @FormUrlEncoded
     @PUT("usuario/idUsuarioPedido/{idUsuario}")
     Call<Usuario> insertBebida(@Path("idUsuario")Long idUsuario,@Field("pedido")String pedido);
+
+    @GET("usuario/emailUsuario/{emailUsuario}")
+    public Call<Usuario> findUserEmail(@Path("emailUsuario")String emailUsuario);
 }
