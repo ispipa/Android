@@ -45,7 +45,7 @@ public class Copas extends AppCompatActivity {
     String img[]=new String[26];
     Boolean compra;
     Long idUser= Long.valueOf(27);
-
+    //Retrofit retrofit;
     List<Integer> limitcant=new ArrayList<>();
     List<Integer> idcant=new ArrayList<>();
     @Override
@@ -61,6 +61,7 @@ public class Copas extends AppCompatActivity {
         autofinbyid();
         fined();
         botones();
+        //retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         for (int i = 0; i < idcopa.length; i++) {
             System.out.println(listaprecio[i]);
         }
@@ -127,7 +128,7 @@ public class Copas extends AppCompatActivity {
     //catalogo de las bebidas y su precio de la base de datos.
     private void fined(){
         long cod;
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        //Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
         for (int i = 0; i < listanombre.length; i++) {
             cod=i+1;
@@ -251,7 +252,7 @@ public class Copas extends AppCompatActivity {
     //comprar bebidas---------------------------------------------------------------------------------------------------------------------------
     //Insertar pedido en ususario
     private void insertar(long id,String pedido){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        //Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
         Call<Usuario>call=consultaApi.insertBebida(id,pedido);
         call.enqueue(new Callback<Usuario>() {
@@ -271,7 +272,7 @@ public class Copas extends AppCompatActivity {
     //seleccionar bebidas---------------------------------------------------------------------------------------------------------
     private void fineddatos(long cod)
     {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        //Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
         Call<Usuario> call = consultaApi.findUser(cod);
         call.enqueue(new Callback<Usuario>()
