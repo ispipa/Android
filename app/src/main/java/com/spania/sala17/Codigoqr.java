@@ -8,6 +8,9 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +57,7 @@ ImageView codigo;
         switch (item.getItemId())
         {
             case R.id.datos:
-                Toast.makeText(Codigoqr.this,"Inicio",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Codigoqr.this,"Inicio", Toast.LENGTH_SHORT).show();
                 Intent p = new Intent(this, DatosUser.class);
                 startActivity(p);
                 break;
