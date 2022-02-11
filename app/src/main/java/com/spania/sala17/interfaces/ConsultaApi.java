@@ -3,6 +3,7 @@ package com.spania.sala17.interfaces;
 
 
 import com.spania.sala17.models.Bebida;
+import com.spania.sala17.models.Evento;
 import com.spania.sala17.models.Usuario;
 
 import java.util.List;
@@ -28,4 +29,7 @@ public interface ConsultaApi {
     @FormUrlEncoded
     @PUT("usuario/idUsuarioPedido/{idUsuario}")
     Call<Usuario> insertBebida(@Path("idUsuario")Long idUsuario,@Field("pedido")String pedido);
+
+    @POST("evento")
+    Call<Evento> insertarEvento(@Field("nombreEvento") String nombreEvento, @Field("usuario") long usuario);
 }

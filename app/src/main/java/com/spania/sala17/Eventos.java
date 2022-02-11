@@ -12,7 +12,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.spania.sala17.interfaces.ConsultaApi;
+import com.spania.sala17.models.Evento;
+
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class  Eventos extends AppCompatActivity
 {
@@ -40,7 +49,25 @@ public class  Eventos extends AppCompatActivity
         adapter = new CustomAdapter(listadoEntradas, this);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        //referencio al boton
+
+        //guardar entrada en base de datos
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
+        long zakas = 0;
+        Call<Evento> call = consultaApi.insertarEvento(textoRecogido, zakas);
+        call.enqueue(new Callback<Evento>() {
+            @Override
+            public void onResponse(Call<Evento> call, Response<Evento> response) {
+                if (response.isSuccessful()){
+                    System.out.println("todo ok");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Evento> call, Throwable t) {
+                System.out.println("No conexión");
+            }
+        });
 
         //retornar = findViewById();
         comprar = findViewById(R.id.btCompra);
