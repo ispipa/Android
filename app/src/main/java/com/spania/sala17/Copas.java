@@ -85,12 +85,15 @@ public class Copas extends AppCompatActivity {
         pedir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                for (int i = 0; i < cant.length; i++) {
+                    resulcopa[i]=0;
+                }
                 fineddatos(idUser);
-
+                pedirB=true;
                 pedir.setEnabled(false);
                 comprar.setEnabled(true);
                 pagar.setText("pedir");
-
+                sumapedir();
             }
         });
 
@@ -196,7 +199,6 @@ public class Copas extends AppCompatActivity {
             }
             else if(pedirB){
                 if((v.getId()==getResources().getIdentifier(id[3]+i,"id",getPackageName()))&&(cant[i]>0)){
-
                     resulcopa[i]-=listaprecio[i];
                     cant[i]=resulcopa[i]/listaprecio[i];
                     calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
@@ -321,7 +323,7 @@ public class Copas extends AppCompatActivity {
                                 aux2="";
                             }
                         }
-                        pedirB=true;
+
                     }
                     sumapedir();
                 }
@@ -333,14 +335,15 @@ public class Copas extends AppCompatActivity {
             }
         });
     }
+    //resetera las cantidades seleccioadas de bebidas-----------------------------------------------------------------------
     private void sumapedir(){
             for (int i = 0; i < idcopa.length; i++) {
                 for (int j = 0; j < idcant.size(); j++) {
                     if (idcopa[i]==idcant.get(j)){
-                        cant[i]=0;
                             calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
                     }
                 }
+                cant[i]=0;
             }
     }
     @Override
