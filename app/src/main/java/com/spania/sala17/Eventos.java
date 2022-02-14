@@ -26,6 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class  Eventos extends AppCompatActivity
 {
     Button comprar;
+    String idUser = "";
     public static ArrayList<Entrada> listadoEntradas = new ArrayList<>();
     public static CustomAdapter adapter;
 
@@ -39,8 +40,9 @@ public class  Eventos extends AppCompatActivity
 
         Intent a = getIntent();
         //recoger Id del usuario
-        //String textoId = a.getStringExtra()
+        idUser = a.getStringExtra("iduser");
         String booleanRecogido = "false";
+        long idUserLong = Long.parseLong(idUser);
 
         ListView listView = findViewById(R.id.listView);
         //listadoEntradas.add(new Entrada("Barceló 23 de Marzo", R.drawable.pari));
@@ -58,7 +60,24 @@ public class  Eventos extends AppCompatActivity
         //hago get de los eventos que ya existen
         Retrofit retrofitGet = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaGet = retrofitGet.create(ConsultaApi.class);
-        //Call<Evento> callGet = consultaGet.findEvento()
+        Call<Evento> callGet = consultaGet.findEvento(idUserLong);
+        callGet.enqueue(new Callback<Evento>()
+        {
+            @Override
+            public void onResponse(Call<Evento> call, Response<Evento> response)
+            {
+                if(response.isSuccessful())
+                {
+                    System.out.println("Todo ok");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Evento> call, Throwable t)
+            {
+                System.out.println("Conexión fallida");
+            }
+        });
 
         if(booleanRecogido=="true")
         {
@@ -66,8 +85,8 @@ public class  Eventos extends AppCompatActivity
             //guardar entrada en base de datos
             Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
             ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
-            long zakas = 0;
-            Call<Evento> call = consultaApi.insertarEvento(textoRecogido, zakas);
+            System.out.println("estamos posteando " + textoRecogido);
+            Call<Evento> call = consultaApi.insertarEvento(textoRecogido, idUserLong);
             call.enqueue(new Callback<Evento>()
             {
                 @Override

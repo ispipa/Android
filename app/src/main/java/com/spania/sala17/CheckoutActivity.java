@@ -129,7 +129,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 compra = true;
                 String booleanoCompra = String.valueOf(compra);
                 volver.putExtra("boolean", booleanoCompra);
-                volver.putExtra("infoEntrada", texto);
+                volver.putExtra("infoEntrada", String.valueOf(texto));
                 volver.putExtra("vipSI", finalVipSI);
                 startActivity(volver);
             }
