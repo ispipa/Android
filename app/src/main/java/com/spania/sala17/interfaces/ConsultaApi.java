@@ -30,6 +30,7 @@ public interface ConsultaApi {
     @GET("usuario/emailUsuario/{emailUsuario}")
     Call<Usuario> findUserEmail(@Path("emailUsuario")String emailUsuario);
 
+    @FormUrlEncoded
     @POST("usuario")
     Call<Usuario>insertarDatosUusario(@Field("nombreUsuario")String nombreUsuario,
                                       @Field("apellidoUsuario")String apellidoUsuario,
