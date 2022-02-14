@@ -37,6 +37,7 @@ public class  Eventos extends AppCompatActivity
 
 
         Intent a = getIntent();
+        String booleanRecogido = "false";
 
         ListView listView = findViewById(R.id.listView);
         //listadoEntradas.add(new Entrada("Barceló 23 de Marzo", R.drawable.pari));
@@ -45,22 +46,25 @@ public class  Eventos extends AppCompatActivity
         Intent llegar = getIntent();
         String textoRecogido = llegar.getStringExtra("infoEntrada");
         String vipRecogido = llegar.getStringExtra("vipSI");
-        String booleanRecogido = llegar.getStringExtra("boolean");
+        booleanRecogido = llegar.getStringExtra("boolean");
         listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari, vipRecogido));
         adapter = new CustomAdapter(listadoEntradas, this);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        if(booleanRecogido.equals("true"))
+        if(booleanRecogido=="true")
         {
+            System.out.println("entrado al if");
             //guardar entrada en base de datos
             Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
             ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
             long zakas = 0;
             Call<Evento> call = consultaApi.insertarEvento(textoRecogido, zakas);
-            call.enqueue(new Callback<Evento>() {
+            call.enqueue(new Callback<Evento>()
+            {
                 @Override
-                public void onResponse(Call<Evento> call, Response<Evento> response) {
+                public void onResponse(Call<Evento> call, Response<Evento> response)
+                {
                     if (response.isSuccessful()){
                         System.out.println("todo ok");
                     }
@@ -73,9 +77,9 @@ public class  Eventos extends AppCompatActivity
             });
         }
         else
-        {
-            booleanRecogido = "No pagao";
-        }
+            {
+                System.out.println("no hay entrada");
+            }
 
         //retornar = findViewById();
         comprar = findViewById(R.id.btCompra);
