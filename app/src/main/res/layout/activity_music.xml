@@ -7,4 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".Music">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <SearchView
+      android:id="@+id/buscadorMusica"
+      android:layout_width="406dp"
+      android:layout_height="77dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+      android:id="@+id/imagenAlbun"
+      android:layout_width="235dp"
+      android:layout_height="302dp"
+      android:layout_marginTop="60dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/buscadorMusica"
+      app:srcCompat="@drawable/alex" />
+
+  <SeekBar
+      android:id="@+id/seekBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imagenAlbun" />
+</androidx.constraintlayout.widget.ConstraintLayout>

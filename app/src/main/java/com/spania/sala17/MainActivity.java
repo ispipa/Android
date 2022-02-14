@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity
     String nombre;
     Button btRegistro;
     String letra;
+    //------------------------
+    Button musica;
+    //------------------------
     boolean paso=false;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +47,9 @@ public class MainActivity extends AppCompatActivity
         email = findViewById(R.id.email);
         pss = findViewById(R.id.password);
         btRegistro = findViewById(R.id.reg);
+        //-------------------
+        musica = findViewById(R.id.musica);
+        //-------------------
 
         TextView tvMultiColor = (TextView) findViewById(R.id.sala);
         Spannable wordToSpan = new SpannableString("Sala 17");
@@ -61,6 +67,17 @@ public class MainActivity extends AppCompatActivity
                 startActivity(registrarse);
             }
         });
+        //---------------------------------
+        musica.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent a = new Intent(MainActivity.this,Music.class);
+                startActivity(a);
+            }
+        });
+        //---------------------------------
 
     }
     public void onclick(View v )
