@@ -65,7 +65,9 @@ public class Copas extends AppCompatActivity {
         autofinbyid();
         fined();
         botones();
-
+        for (int i = 0; i < idcopa.length; i++) {
+            System.out.println(listaprecio[i]);
+        }
     }
     //general----------------------------------------------------------------------------------
     private void botones(){
@@ -148,8 +150,6 @@ public class Copas extends AppCompatActivity {
                             listaprecio[finalI]=bebida.getPrecio();
                             listanombre[finalI]=bebida.getNombreBebida();
                             idcopa[finalI]=(int)bebida.getId_bebida();
-
-
                         }
                     } catch (Exception ex) {
                         Toast.makeText(Copas.this, "pepe", Toast.LENGTH_SHORT).show();
@@ -313,10 +313,7 @@ public class Copas extends AppCompatActivity {
                         }
                         pedirB=true;
                     }
-
-
                 }
-
             }
             @Override
             public void onFailure(Call<Usuario> call, Throwable t)
