@@ -259,6 +259,7 @@ public class Copas extends AppCompatActivity {
 
             }
             i.putExtra("idUser", String.valueOf(idUser));
+            //i.setFlags(i.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(i);
         }
 
