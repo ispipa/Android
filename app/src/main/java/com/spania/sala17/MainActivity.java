@@ -19,6 +19,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.spania.sala17.interfaces.ConsultaApi;
+import com.spania.sala17.models.Usuario;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity
 {
     EditText email;
@@ -26,6 +35,7 @@ public class MainActivity extends AppCompatActivity
     String nombre;
     Button btRegistro;
     String letra;
+    boolean paso=false;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -56,13 +66,34 @@ public class MainActivity extends AppCompatActivity
     public void onclick(View v )
     {
         nombre = email.getText().toString();
-        if(!nombre.equals(""))
-        {
-            String nombreUser = nombre;
-            Intent primerIntent = new Intent(MainActivity.this, DatosUser.class);
-            primerIntent.putExtra("nombreUser", nombreUser);
-            startActivity(primerIntent);
-        }
+        letra=pss.getText().toString();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
+        Call<Usuario>call=consultaApi.findUserEmail(nombre);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()){
+                    Usuario usuario= response.body();
+                    String auxpass=usuario.getPassUsuario();
+                    if (letra.equals(auxpass)) {
+                        String nombreUser = usuario.getNombreUsuario();
+                        Intent primerIntent = new Intent(MainActivity.this, DatosUser.class);
+                        primerIntent.putExtra("nombreUser", nombreUser);
+                        primerIntent.putExtra("iduser",String.valueOf(usuario.getIdUsuario()));
+                        startActivity(primerIntent);
+                        paso=true;
+                    }
+                }
+                if (paso==false){
+                    Toast.makeText(MainActivity.this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                Toast.makeText(MainActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

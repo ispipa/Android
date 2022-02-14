@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">http://ec2-54-205-129-91.compute-1.amazonaws.com:8080</domain>
     </domain-config>
 </network-security-config>
