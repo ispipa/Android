@@ -36,7 +36,10 @@ public class  Eventos extends AppCompatActivity
         setContentView(R.layout.activity_eventos);
 
 
+
         Intent a = getIntent();
+        //recoger Id del usuario
+        //String textoId = a.getStringExtra()
         String booleanRecogido = "false";
 
         ListView listView = findViewById(R.id.listView);
@@ -51,6 +54,11 @@ public class  Eventos extends AppCompatActivity
         adapter = new CustomAdapter(listadoEntradas, this);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        //hago get de los eventos que ya existen
+        Retrofit retrofitGet = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        ConsultaApi consultaGet = retrofitGet.create(ConsultaApi.class);
+        //Call<Evento> callGet = consultaGet.findEvento()
 
         if(booleanRecogido=="true")
         {
