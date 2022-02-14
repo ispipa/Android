@@ -32,6 +32,7 @@ public class Codigoqr extends AppCompatActivity
     Retrofit retrofit;
     ConsultaApi consultaApi;
     String pedido;
+    String pedidos;
     public static ArrayAdapter<Bebida> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -52,8 +53,10 @@ public class Codigoqr extends AppCompatActivity
         for (int j = 0; j < 26; j++) {
             pedido=i.getStringExtra("ocupado"+j);
             if (pedido.equals("si")){
-                ver.setText(i.getStringExtra("nombre"+j)+" X "+i.getStringExtra("cant"+j));
+                pedidos+=i.getStringExtra("nombre"+j)+" X "+i.getStringExtra("cant"+j)+"\n";
+
             }
+            ver.setText(pedidos);
             qr();
         }
         botones();

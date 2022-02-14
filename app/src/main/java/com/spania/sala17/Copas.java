@@ -56,11 +56,13 @@ public class Copas extends AppCompatActivity {
         pagar = findViewById(R.id.button);
         pedir=findViewById(R.id.pedir1);
         comprar=findViewById(R.id.comprar);
+        //asignacion de limites de sum y res
         comprar.setEnabled(false);
         compra=true;
         Intent intent=getIntent();
         String aux=intent.getStringExtra("iduser");
         idUser= Long.parseLong(aux);
+
         autofinbyid();
         fined();
         botones();

@@ -16,6 +16,7 @@ public class DatosUser extends AppCompatActivity
     String welcome;
     Button btEventos;
     Button btcompra;
+    String idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,6 +34,7 @@ public class DatosUser extends AppCompatActivity
         btcompra=findViewById(R.id.btCompra);
         Intent j = getIntent();
         welcome = j.getStringExtra("nombreUser");
+        idUser= j.getStringExtra("iduser");
 
         //si viene de registros seteo un texto al textView, si viene de login seteo otro
         if(!nombreRegistro.equals(""))
@@ -51,23 +53,28 @@ public class DatosUser extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent i = new Intent(DatosUser.this, Tinder.class);
+                i.putExtra("iduser",idUser);
                 startActivity(i);
             }
         });
+        //Pasar de esta activity a la del eventos
         btEventos.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 Intent a = new Intent(DatosUser.this, Eventos.class);
+                a.putExtra("iduser",idUser);
                 startActivity(a);
             }
         });
+        //Pasar de esta activity a la del comprar copas
         btcompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent a = new Intent(DatosUser.this, Copas.class);
-                startActivity(a);
+                Intent e = new Intent(DatosUser.this, Copas.class);
+                e.putExtra("iduser",String.valueOf(idUser));
+                startActivity(e);
             }
         });
 
