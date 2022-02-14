@@ -1,6 +1,5 @@
 package com.spania.sala17;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,9 +15,6 @@ import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.spania.sala17.interfaces.ConsultaApi;
 import com.spania.sala17.models.Bebida;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -54,7 +50,7 @@ public class Codigoqr extends AppCompatActivity
             pedido=i.getStringExtra("ocupado"+j);
             if (pedido.equals("si")){
                 pedidos+=i.getStringExtra("nombre"+j)+" X "+i.getStringExtra("cant"+j)+"\n";
-
+                System.out.println(pedidos);
             }
             ver.setText(pedidos);
             qr();
@@ -66,7 +62,16 @@ public class Codigoqr extends AppCompatActivity
         pedir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cantselect.getText();
+                Intent i = new Intent(Codigoqr.this,Copas.class);
+                startActivity(i);
+            }
+        });
+
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Codigoqr.this,DatosUser.class);
+                startActivity(i);
             }
         });
     }

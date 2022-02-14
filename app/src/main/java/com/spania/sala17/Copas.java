@@ -44,7 +44,7 @@ public class Copas extends AppCompatActivity {
     int cant[]=new int[26];
     int idcopa[]=new int[26];
     String img[]=new String[26];
-    boolean compra;
+
     boolean pedirB=false;
     Long idUser;
     List<Integer> limitcant=new ArrayList<>();
@@ -58,7 +58,7 @@ public class Copas extends AppCompatActivity {
         comprar=findViewById(R.id.comprar);
         //asignacion de limites de sum y res
         comprar.setEnabled(false);
-        compra=true;
+
         Intent intent=getIntent();
         String aux=intent.getStringExtra("iduser");
         idUser= Long.parseLong(aux);
@@ -72,7 +72,8 @@ public class Copas extends AppCompatActivity {
         comprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                compra=true;
+                pedirB=false;
+
                 comprar.setEnabled(false);
                 pedir.setEnabled(true);
                 pagar.setText("pagar");
@@ -85,17 +86,11 @@ public class Copas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 fineddatos(idUser);
-                compra=false;
+
                 pedir.setEnabled(false);
                 comprar.setEnabled(true);
                 pagar.setText("pedir");
-                for (int i = 0; i < idcopa.length; i++) {
-                    for (int j = 0; j < idcant.size(); j++) {
-                        if (idcopa[i]==idcant.get(j)){
-                            calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
-                        }
-                    }
-                }
+
             }
         });
 
@@ -148,6 +143,7 @@ public class Copas extends AppCompatActivity {
                             listaprecio[finalI]=bebida.getPrecio();
                             listanombre[finalI]=bebida.getNombreBebida();
                             idcopa[finalI]=(int)bebida.getId_bebida();
+                            calcopa[finalI].setText("0 x "+bebida.getPrecio()+" = 0");
                         }
                     } catch (Exception ex) {
                         Toast.makeText(Copas.this, "pepe", Toast.LENGTH_SHORT).show();
@@ -162,8 +158,8 @@ public class Copas extends AppCompatActivity {
     }
     //autobusqueda de boton y calculo suma
     public void sumar(View v){
-        for (int i = 0; i < sum.length; i++) {
-            if (compra){
+        if (pedirB==false){
+            for (int i = 0; i < sum.length; i++) {
                 if(cant[i]<99){
                     if (v.getId()==getResources().getIdentifier(id[2]+i,"id",getPackageName())){
                         resulcopa[i]+=listaprecio[i];
@@ -171,26 +167,39 @@ public class Copas extends AppCompatActivity {
                         calcopa[i].setText(cant[i]+" x "+listaprecio[i]+" = "+resulcopa[i]+"€");
                     }
                 }
-            }else if(pedirB){
-                if (cant[i]<limitcant.get(i)){
-                    if(v.getId()==getResources().getIdentifier(id[2]+i,"id",getPackageName())){
-                        resulcopa[i]+=listaprecio[i];
-                        cant[i]=resulcopa[i]/listaprecio[i];
-                        calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
+        }
+
+        }else if(pedirB){
+        for (int i = 0; i < limitcant.size(); i++) {
+                if (limitcant.get(i)>0){
+                    if((v.getId()==getResources().getIdentifier(id[2]+i,"id",getPackageName()))&&(cant[i]<limitcant.get(i))) {
+                        resulcopa[i] += listaprecio[i];
+                        cant[i] = resulcopa[i] / listaprecio[i];
+                        calcopa[i].setText("Cantidad " + cant[i] + " / " + limitcant.get(i));
+
                     }
                 }
             }
         }
         total();
     }
+
     //autobusqueda de boton y calculo resta
     public void restar(View v){
         for (int i = 0; i < rest.length; i++) {
-            if (cant[i]>0){
+            if ((cant[i]>0)&&(pedirB==false)){
                 if (v.getId()==getResources().getIdentifier(id[3]+i,"id",getPackageName())){
                     resulcopa[i]-=listaprecio[i];
                     cant[i]=resulcopa[i]/listaprecio[i];
                     calcopa[i].setText(cant[i]+" x "+listaprecio[i]+" = "+resulcopa[i]+"€");
+                }
+            }
+            else if(pedirB){
+                if((v.getId()==getResources().getIdentifier(id[3]+i,"id",getPackageName()))&&(cant[i]>0)){
+
+                    resulcopa[i]-=listaprecio[i];
+                    cant[i]=resulcopa[i]/listaprecio[i];
+                    calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
                 }
             }
         }
@@ -208,7 +217,7 @@ public class Copas extends AppCompatActivity {
     }
     //pagar y guardar lo datos
     public void pagar(View v) {
-        if (compra){
+        if (pedirB==false){
             String auxpedido = "";
             for (int k = 0; k < nomcopa.length; k++) {
                 if (cant[k] >= 1) {
@@ -227,8 +236,11 @@ public class Copas extends AppCompatActivity {
                     auxpedido += ids;
                     auxpedido += cants;
                 }
+                cant[k]=0;
             }
+
             insertar(idUser, auxpedido);
+
         }else{
             pedir();
         }
@@ -311,6 +323,7 @@ public class Copas extends AppCompatActivity {
                         }
                         pedirB=true;
                     }
+                    sumapedir();
                 }
             }
             @Override
@@ -320,7 +333,16 @@ public class Copas extends AppCompatActivity {
             }
         });
     }
-
+    private void sumapedir(){
+            for (int i = 0; i < idcopa.length; i++) {
+                for (int j = 0; j < idcant.size(); j++) {
+                    if (idcopa[i]==idcant.get(j)){
+                        cant[i]=0;
+                            calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
+                    }
+                }
+            }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
