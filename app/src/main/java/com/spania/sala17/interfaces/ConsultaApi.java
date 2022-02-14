@@ -40,4 +40,7 @@ public interface ConsultaApi {
 
     @POST("evento")
     Call<Evento> insertarEvento(@Field("nombreEvento") String nombreEvento, @Field("usuario") long usuario);
+
+    @GET("evento")
+    public Call<Evento> findEvento(@Path("idUser") Long idUser);
 }
