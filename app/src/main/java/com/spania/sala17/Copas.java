@@ -62,7 +62,6 @@ public class Copas extends AppCompatActivity {
         Intent intent=getIntent();
         String aux=intent.getStringExtra("iduser");
         idUser= Long.parseLong(aux);
-
         autofinbyid();
         fined();
         botones();
@@ -219,6 +218,7 @@ public class Copas extends AppCompatActivity {
     }
     //pagar y guardar lo datos
     public void pagar(View v) {
+        fineddatos(idUser);
         if (pedirB==false){
             String auxpedido = "";
             for (int k = 0; k < nomcopa.length; k++) {
@@ -250,6 +250,7 @@ public class Copas extends AppCompatActivity {
     //pedir bebidas en qr y pasar los datos
     private void pedir(){
         Intent i = new Intent(this,Codigoqr.class);
+        i.putExtra("idUser",String.valueOf(idUser));
         for (int k = 0; k < nomcopa.length; k++) {
             if (cant[k]<=0) {
                 i.putExtra("ocupado"+k,"no");
@@ -257,6 +258,7 @@ public class Copas extends AppCompatActivity {
                 i.putExtra("ocupado"+k,"si");
                 i.putExtra("nombre"+k, listanombre[k]);
                 i.putExtra("cant"+k, String.valueOf(cant[k]));
+
             }
             i.putExtra("idUser", String.valueOf(idUser));
             startActivity(i);

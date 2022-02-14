@@ -28,7 +28,8 @@ public class Codigoqr extends AppCompatActivity
     Retrofit retrofit;
     ConsultaApi consultaApi;
     String pedido;
-    String pedidos;
+    String pedidos="";
+    String idUser;
     public static ArrayAdapter<Bebida> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,8 +45,7 @@ public class Codigoqr extends AppCompatActivity
         consultaApi = retrofit.create(ConsultaApi.class);
         Intent i=getIntent();
         //String aux=i.getStringExtra("idUser");
-
-
+        idUser=i.getStringExtra("idUser");
         for (int j = 0; j < 26; j++) {
             pedido=i.getStringExtra("ocupado"+j);
             if (pedido.equals("si")){
@@ -62,8 +62,9 @@ public class Codigoqr extends AppCompatActivity
         pedir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Codigoqr.this,Copas.class);
-                startActivity(i);
+                Intent e = new Intent(Codigoqr.this, Copas.class);
+                e.putExtra("iduser",String.valueOf(idUser));
+                startActivity(e);
             }
         });
 
@@ -71,7 +72,9 @@ public class Codigoqr extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Codigoqr.this,DatosUser.class);
+                i.putExtra("iduser",String.valueOf(idUser));
                 startActivity(i);
+
             }
         });
     }
