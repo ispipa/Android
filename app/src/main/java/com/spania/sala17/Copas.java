@@ -240,9 +240,7 @@ public class Copas extends AppCompatActivity {
                 }
                 cant[k]=0;
             }
-
             insertar(idUser, auxpedido);
-
         }else{
             pedir();
         }
