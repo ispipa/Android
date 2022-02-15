@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity
                         Intent primerIntent = new Intent(MainActivity.this, DatosUser.class);
                         primerIntent.putExtra("nombreUser", nombreUser);
                         primerIntent.putExtra("iduser",String.valueOf(usuario.getIdUsuario()));
+                        System.out.println("Recibimos algo?: " + String.valueOf(usuario.getIdUsuario()));
                         startActivity(primerIntent);
                         paso=true;
                     }

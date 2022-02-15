@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class  Eventos extends AppCompatActivity
 {
     Button comprar;
+    Long idUserLong;
     String idUser = "";
     public static ArrayList<Entrada> listadoEntradas = new ArrayList<>();
     public static CustomAdapter adapter;
@@ -37,12 +39,14 @@ public class  Eventos extends AppCompatActivity
         setContentView(R.layout.activity_eventos);
 
 
-
+        //recibo intent de datos user
         Intent a = getIntent();
         //recoger Id del usuario
         idUser = a.getStringExtra("iduser");
-        String booleanRecogido = "false";
-        long idUserLong = Long.parseLong(idUser);
+        idUserLong = Long.parseLong(idUser);
+        System.out.println(idUser + " ojito que estamos aqui");
+        String comprando;
+
 
         ListView listView = findViewById(R.id.listView);
         //listadoEntradas.add(new Entrada("Barceló 23 de Marzo", R.drawable.pari));
@@ -51,21 +55,28 @@ public class  Eventos extends AppCompatActivity
         Intent llegar = getIntent();
         String textoRecogido = llegar.getStringExtra("infoEntrada");
         String vipRecogido = llegar.getStringExtra("vipSI");
-        booleanRecogido = llegar.getStringExtra("boolean");
+        comprando = llegar.getStringExtra("comprando");
+        String idRecibido = llegar.getStringExtra("iduser");
+
+        //aqui va lo de listview en caso de crasheo
         listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari, vipRecogido));
         adapter = new CustomAdapter(listadoEntradas, this);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        System.out.println("añade entrada");
+
 
         //hago get de los eventos que ya existen
         Retrofit retrofitGet = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaGet = retrofitGet.create(ConsultaApi.class);
         Call<Evento> callGet = consultaGet.findEvento(idUserLong);
+        System.out.println("hacemos get");
         callGet.enqueue(new Callback<Evento>()
         {
             @Override
             public void onResponse(Call<Evento> call, Response<Evento> response)
             {
+                System.out.println(response.code());
                 if(response.isSuccessful())
                 {
                     System.out.println("Todo ok");
@@ -75,38 +86,45 @@ public class  Eventos extends AppCompatActivity
             @Override
             public void onFailure(Call<Evento> call, Throwable t)
             {
-                System.out.println("Conexión fallida");
+                System.out.println("Conexión fallida: " + t.toString());
             }
         });
 
-        if(booleanRecogido=="true")
+        System.out.println("boolean recogido: " + comprando);
+
+        if( comprando != null && comprando.compareTo("true") == 0 )
         {
             System.out.println("entrado al if");
+            System.out.println("vamos al long");
+            Long idUsuario = Long.parseLong(idRecibido);
             //guardar entrada en base de datos
             Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
             ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
             System.out.println("estamos posteando " + textoRecogido);
-            Call<Evento> call = consultaApi.insertarEvento(textoRecogido, idUserLong);
+            Call<Evento> call = consultaApi.insertarEvento(textoRecogido, idUsuario);
+            System.out.println("posteado(?");
             call.enqueue(new Callback<Evento>()
             {
                 @Override
                 public void onResponse(Call<Evento> call, Response<Evento> response)
                 {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful())
+                    {
                         System.out.println("todo ok");
                     }
                 }
 
                 @Override
-                public void onFailure(Call<Evento> call, Throwable t) {
+                public void onFailure(Call<Evento> call, Throwable t)
+                {
                     System.out.println("No conexión");
                 }
             });
         }
         else
-            {
-                System.out.println("no hay entrada");
-            }
+        {
+            System.out.println("boolean es null");
+        }
 
         //retornar = findViewById();
         comprar = findViewById(R.id.btCompra);
@@ -118,19 +136,11 @@ public class  Eventos extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent k = new Intent(Eventos.this, CompraEntradas.class);
+                k.putExtra("iduser", idUser);
                 startActivity(k);
             }
         });
 
-        /*retornar.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent volverAtras = new Intent(Eventos.this, DatosUser.class);
-                startActivity(volverAtras);
-            }
-        });*/
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
