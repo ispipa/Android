@@ -29,6 +29,7 @@ public class  Eventos extends AppCompatActivity
     Button comprar;
     Long idUserLong;
     String idUser = "";
+    String todoEvento = "";
     public static ArrayList<Entrada> listadoEntradas = new ArrayList<>();
     public static CustomAdapter adapter;
 
@@ -54,6 +55,7 @@ public class  Eventos extends AppCompatActivity
 
         Intent llegar = getIntent();
         String textoRecogido = llegar.getStringExtra("infoEntrada");
+        todoEvento = idUserLong.toString();
         String vipRecogido = llegar.getStringExtra("vipSI");
         comprando = llegar.getStringExtra("comprando");
         String idRecibido = llegar.getStringExtra("iduser");
