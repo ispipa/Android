@@ -39,6 +39,7 @@ public class CompraEntradas extends AppCompatActivity
         setContentView(R.layout.activity_compra_entradas);
 
         Intent i = getIntent();
+        String idRecogido = i.getStringExtra("iduser");
 
         primeraEntrada = findViewById(R.id.entrada);
         primeraEntrada.setText("Chill en Badulaque");
@@ -74,6 +75,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = primeraEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
 
             }
@@ -86,6 +88,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = segundaEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
 
             }
@@ -98,6 +101,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = terceraEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
 
             }
@@ -110,6 +114,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = cuartaEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
 
             }
@@ -122,6 +127,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = quintaEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
 
             }
@@ -134,6 +140,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = sextaEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
 
             }
@@ -146,6 +153,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = septimaEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
             }
         });
@@ -157,6 +165,7 @@ public class CompraEntradas extends AppCompatActivity
                 String infoEntrada = octavaEntrada.getText().toString();
                 Intent a = new Intent(CompraEntradas.this, OpcionesCompra.class);
                 a.putExtra("infoEntrada", infoEntrada);
+                a.putExtra("iduser", idRecogido);
                 startActivity(a);
             }
         });

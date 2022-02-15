@@ -37,6 +37,7 @@ public class OpcionesCompra extends AppCompatActivity
         radioGroup = findViewById(R.id.radioGroup);
         Intent i = getIntent();
         info = i.getStringExtra("infoEntrada");
+        String idRecogido = i.getStringExtra("iduser");
         infoRecogida.setText(info);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
@@ -71,6 +72,7 @@ public class OpcionesCompra extends AppCompatActivity
                 pagacion.putExtra("precio", precio);
                 pagacion.putExtra("info", info);
                 pagacion.putExtra("booleano", booleano);
+                pagacion.putExtra("iduser", idRecogido);
                 startActivity(pagacion);
                 /*else
                     {
