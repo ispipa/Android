@@ -65,6 +65,7 @@ public class DatosUser extends AppCompatActivity
             {
                 Intent a = new Intent(DatosUser.this, Eventos.class);
                 a.putExtra("iduser",idUser);
+                System.out.println("Recibimos algo?: " + idUser);
                 startActivity(a);
             }
         });

@@ -49,6 +49,7 @@ public class CheckoutActivity extends AppCompatActivity {
     TextView vipOno;
     String texto;
     String finalVipSI;
+    String idRecogido;
     boolean compra;
 
     @Override
@@ -66,6 +67,7 @@ public class CheckoutActivity extends AppCompatActivity {
         texto = i.getStringExtra("info");
         String vipSI = i.getStringExtra("booleano");
         String precio = i.getStringExtra("precio");
+        idRecogido = i.getStringExtra("iduser");
 
         int precioPagos = Integer.parseInt(precio);
 
@@ -127,10 +129,11 @@ public class CheckoutActivity extends AppCompatActivity {
                 //vuelvo a la activity de eventos
                 Intent volver = new Intent(CheckoutActivity.this, Eventos.class);
                 compra = true;
-                String booleanoCompra = String.valueOf(compra);
-                volver.putExtra("boolean", booleanoCompra);
+
+                volver.putExtra("comprando", "true");
                 volver.putExtra("infoEntrada", String.valueOf(texto));
                 volver.putExtra("vipSI", finalVipSI);
+                volver.putExtra("iduser", idRecogido);
                 startActivity(volver);
             }
         });

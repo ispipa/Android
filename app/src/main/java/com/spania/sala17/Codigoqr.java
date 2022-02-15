@@ -41,8 +41,7 @@ public class Codigoqr extends AppCompatActivity
         pedir=findViewById(R.id.pedirotravez);
         salir=findViewById(R.id.menu);
 
-        retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/").addConverterFactory(GsonConverterFactory.create()).build();
-        consultaApi = retrofit.create(ConsultaApi.class);
+
         Intent i=getIntent();
         //String aux=i.getStringExtra("idUser");
         idUser=i.getStringExtra("idUser");
@@ -65,6 +64,8 @@ public class Codigoqr extends AppCompatActivity
                 Intent e = new Intent(Codigoqr.this, Copas.class);
                 e.putExtra("iduser",String.valueOf(idUser));
                 startActivity(e);
+                //finish()
+
             }
         });
 

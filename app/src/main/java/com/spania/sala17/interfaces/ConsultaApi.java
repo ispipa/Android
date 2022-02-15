@@ -41,10 +41,11 @@ public interface ConsultaApi {
 
 
 
-
+    @FormUrlEncoded
     @POST("evento")
-    Call<Evento> insertarEvento(@Field("nombreEvento") String nombreEvento, @Field("usuario") long usuario);
+    Call<Evento> insertarEvento(@Field("nombreEvento") String nombreEvento,
+                                @Field("usuario") Long usuario);
 
     @GET("evento/usuario/{usuario}")
-    Call<Evento> findEvento(@Path("usuario") long usuario);
+    Call<Evento> findEvento(@Path("usuario") Long usuario);
 }
