@@ -1,58 +1,64 @@
 package com.spania.sala17.adapter;
 
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.spania.sala17.R;
-import com.spania.sala17.pojo.MusicaObjeto;
+import com.spania.sala17.pojo.ObjetoMusica;
+import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class AdapterMusic  extends RecyclerView.Adapter<AdapterMusic.viewholdermusicaobjeto>
+public class AdapterMusic extends RecyclerView.Adapter<AdapterMusic.MiViewHolder>
 {
-    List<MusicaObjeto> musicaList;
+    ArrayList<ObjetoMusica> musica;
+    Context ct;
 
-    public AdapterMusic(List<MusicaObjeto> musicaList)
+    public AdapterMusic(ArrayList<ObjetoMusica> musica, Context ct)
     {
-        this.musicaList = musicaList;
+        this.musica = musica;
+        this.ct = ct;
     }
 
     @NonNull
     @Override
-    public viewholdermusicaobjeto onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public MiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_music,parent,false);
-        viewholdermusicaobjeto holder = new viewholdermusicaobjeto(v);
-        return holder;
+        View view = LayoutInflater.from(ct).inflate(R.layout.activity_music,null);
+        return new MiViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewholdermusicaobjeto holder, int position)
+    public void onBindViewHolder(@NonNull AdapterMusic.MiViewHolder holder, int position)
     {
-        MusicaObjeto musicaObjeto = musicaList.get(position);
-        holder.nombreCancion.setText(musicaObjeto.getArtistAlbun());
-        holder.nombreCancion.setText(musicaObjeto.getArtist());
+        TextView textView = holder.itemView.findViewById(R.id.datosMusica);
+        ImageView imageView = holder.itemView.findViewById(R.id.imaMusica);
+        textView.setText(
+                musica.get(position).getNombreCancion() +
+                        "\n"+
+                 musica.get(position).getNombreArtista());
+        Picasso.get().load(musica.get(position).getUrlCancion()).into(imageView);
     }
 
     @Override
     public int getItemCount()
     {
-        return musicaList.size();
+        return musica.size();
     }
 
-    public class viewholdermusicaobjeto extends RecyclerView.ViewHolder
+    public class MiViewHolder extends RecyclerView.ViewHolder
     {
-        TextView nombreCancion,nombreArtista;
-        public viewholdermusicaobjeto(@NonNull View itemView)
+        public MiViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            nombreCancion = itemView.findViewById(R.id.nombreCancion);
-            nombreArtista = itemView.findViewById(R.id.nombreArtista);
         }
     }
 }

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.spania.sala17.adapter.AdapterMusic;
-import com.spania.sala17.pojo.MusicaObjeto;
+import com.spania.sala17.pojo.ObjetoMusica;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -25,34 +25,22 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
-
-import javax.net.ssl.HttpsURLConnection;
 
 
 public class Music extends AppCompatActivity
 {
     //-------------------------------
-    ArrayList<MusicaObjeto> listaMusic;
-    AdapterMusic adapterMusic;
     String cancionUsuario = "";
     int i = 0;
-    String artist ="";
-    String artistAlbun= "";
+    ArrayList<ObjetoMusica> objetoMusicas = new ArrayList<>();
+    String artist;
+    String artistAlbun;
+    String artisMusic;
     //-------------------------------
     ImageView imaAlbun;
     SearchView buscarMusica;
-    RecyclerView rv;
-    LinearLayoutManager lm;
+    RecyclerView recyclerView;
     //-------------------------------
 
     @Override
@@ -63,13 +51,9 @@ public class Music extends AppCompatActivity
         //---------------------------------------------
         imaAlbun = findViewById(R.id.imagenAlbun);
         buscarMusica = findViewById(R.id.buscadorMusica);
-        rv = findViewById(R.id.rv);
-        lm = new LinearLayoutManager(this);
+        recyclerView = findViewById(R.id.listaMusica);
         //---------------------------------------------
-        rv.setLayoutManager(lm);
-        listaMusic = new ArrayList<>();
-        adapterMusic = new AdapterMusic(listaMusic);
-        rv.setAdapter(adapterMusic);
+
         //---------------------------------------------
         buscarCanciones();
     }
@@ -83,7 +67,7 @@ public class Music extends AppCompatActivity
                 try
                 {
                                                                                             // despues del q se ponde el parametro de requerido para buscar la musica.
-                    URL url = new URL("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + cancionUsuario);
+                    URL url = new URL("https://deezerdevs-deezer.p.rapidapi.com/search?limit=24&&q=" + cancionUsuario);
                     System.out.println("Esta es la url que se le envia :" + url);
                     HttpsURLConnection urlConnection =  (HttpsURLConnection) url.openConnection();
 
@@ -100,26 +84,38 @@ public class Music extends AppCompatActivity
                     }
                     JSONObject jsonObject = new JSONObject(resultado);
                     JSONArray array = jsonObject.getJSONArray("data");
-                     artist = array.getJSONObject(0).getJSONObject("artist").getString("name");
-                     artistAlbun = array.getJSONObject(0).getJSONObject("album").getString("cover_medium");
-
+                    objetoMusicas = new ArrayList<>();
                     for (i = 0; i < array.length() ; i++)
                     {
-                        System.out.println(array.getJSONObject(i).getString("title") + " " + " esto vale i: " + i);
-                        //System.out.println(artist);
-                        //System.out.printf(artistAlbun);
-                    }
+                        JSONObject music = array.getJSONObject(i);
+                        artist= (music.getJSONObject("artist").getString("name"));
+                        artistAlbun= (music.getJSONObject("album").getString("cover_medium"));
+                        artisMusic= (music.getString("link"));
 
+                        /*if(artist.contains(music.getJSONObject("artist").getString("name")) &&
+                                artistAlbun.contains( music.getJSONObject("album").getString("cover_medium"))&&
+                                artisMusic.contains(music.getString("link")))
+                        {
+                            artist.remove(i);
+                            artistAlbun.remove(i);
+                            objetoMusicas.remove(i);
+                        }else
+                        {
+                            objetoMusicas.add(new ObjetoMusica(artisMusic.get(i),artist.get(i),artistAlbun.get(i)));
+                        }*/
+                        objetoMusicas.add(new ObjetoMusica(artisMusic,artist,artistAlbun));
+                    }
+                    System.out.println(objetoMusicas.get(1).getNombreCancion());
+                    System.out.println(objetoMusicas.get(1).getNombreArtista());
+                    System.out.println(objetoMusicas.get(1).getUrlCancion());
+                    System.out.println(array.length());
                     runOnUiThread(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            System.out.println("Estos son los paramentso de entrada a la lista: " + artist+ "  " + artistAlbun);
-                            MusicaObjeto musicaObjeto = new MusicaObjeto(artist);
-                            listaMusic.add(musicaObjeto);
-                            System.out.println("Esto esta en la lista musica: " + listaMusic.get(0).toString());
-                            adapterMusic.notifyDataSetChanged();
+                                    AdapterMusic adapterMusic = new AdapterMusic(objetoMusicas, Music.this);
+                                    recyclerView.setAdapter(adapterMusic);
                             //ponerimagenAlbun(artistAlbun);
                         }
                     });
@@ -158,7 +154,7 @@ public class Music extends AppCompatActivity
             @Override
             public boolean onQueryTextChange(String s)
             {
-                buscar(s);
+                //buscar(s);
                 cancionUsuario  = s;
                 System.out.println(cancionUsuario);
                 reponseDeezers();
@@ -167,7 +163,7 @@ public class Music extends AppCompatActivity
         });
     }
 
-    private void buscar(String s)
+    /*private void buscar(String s)
     {
         ArrayList<MusicaObjeto>myList = new ArrayList<>();
         for (MusicaObjeto obj : myList)
@@ -179,5 +175,5 @@ public class Music extends AppCompatActivity
         }
         AdapterMusic adapterMusic = new AdapterMusic(myList);
         rv.setAdapter(adapterMusic);
-    }
+    }*/
 }

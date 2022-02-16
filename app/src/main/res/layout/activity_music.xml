@@ -22,44 +22,9 @@
     />
 
 
+
+
     ]]>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="413dp"
-        android:layout_height="109dp"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/teal_200"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717"
-        tools:layout_editor_absoluteX="-4dp">
-
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/nombreCancion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre Cancion:"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/nombreArtista"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Artista:"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
     <ImageView
       android:id="@+id/imagenAlbun"
@@ -80,13 +45,16 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/imagenAlbun" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="395dp"
-        android:layout_height="331dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buscadorMusica" />
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/listaMusica"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginTop="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/buscadorMusica"
+      app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
