@@ -4,36 +4,53 @@ public class ObjetoMusica
 {
     String nombreCancion;
     String nombreArtista;
-    String urlCancion;
+    String imaCancion;
+    String artisMusicLink;
 
-    public ObjetoMusica(String nombreCancion, String nombreArtista, String urlCancion)
+    public ObjetoMusica(String nombreCancion, String nombreArtista, String imaCancion, String artisMusicLink)
     {
         this.nombreCancion = nombreCancion;
         this.nombreArtista = nombreArtista;
-        this.urlCancion = urlCancion;
+        this.imaCancion = imaCancion;
+        this.artisMusicLink = artisMusicLink;
+    }
+
+    public ObjetoMusica() {
     }
 
     public String getNombreCancion() {
         return nombreCancion;
     }
 
-    public void setNombreCancion(String nombreCancion) {
-        this.nombreCancion = nombreCancion;
-    }
 
     public String getNombreArtista() {
         return nombreArtista;
     }
 
-    public void setNombreArtista(String nombreArtista) {
-        this.nombreArtista = nombreArtista;
+    public String getImaCancion() {
+        return imaCancion;
     }
 
-    public String getUrlCancion() {
-        return urlCancion;
+    /*public void setImaCancion(String imaCancion) {
+        this.imaCancion = imaCancion;
+    }*/
+
+    public String getArtisMusicLink() {
+        return artisMusicLink;
     }
 
-    public void setUrlCancion(String urlCancion) {
-        this.urlCancion = urlCancion;
+    /*public void setArtisMusicLink(String artisMusicLink) {
+        this.artisMusicLink = artisMusicLink;
+    }*/
+
+    @Override
+    public String toString()
+    {
+        return "ObjetoMusica{" +
+                "nombreCancion='" + nombreCancion + '\'' +
+                ", nombreArtista='" + nombreArtista + '\'' +
+                ", imaCancion='" + imaCancion + '\'' +
+                ", artisMusicLink='" + artisMusicLink + '\'' +
+                '}';
     }
 }

@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,6 +36,7 @@ public class Copas extends AppCompatActivity {
     Button pagar, pedir,comprar;
     ImageView []fotocopa= new ImageView[26];
     int total;
+    int haycant=0;
 
     String [] id={"calcopa","nomcopa","sum","rest","fotocopa"};
     String listanombre[]=new String[26];
@@ -58,13 +59,14 @@ public class Copas extends AppCompatActivity {
         comprar=findViewById(R.id.comprar);
         //asignacion de limites de sum y res
         comprar.setEnabled(false);
-
         Intent intent=getIntent();
         String aux=intent.getStringExtra("iduser");
         idUser= Long.parseLong(aux);
+
         autofinbyid();
         fined();
         botones();
+
     }
     //general----------------------------------------------------------------------------------
     private void botones(){
@@ -72,7 +74,6 @@ public class Copas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pedirB=false;
-
                 comprar.setEnabled(false);
                 pedir.setEnabled(true);
                 pagar.setText("pagar");
@@ -93,6 +94,7 @@ public class Copas extends AppCompatActivity {
                 comprar.setEnabled(true);
                 pagar.setText("pedir");
                 sumapedir();
+
             }
         });
 
@@ -169,16 +171,15 @@ public class Copas extends AppCompatActivity {
                         calcopa[i].setText(cant[i]+" x "+listaprecio[i]+" = "+resulcopa[i]+"€");
                     }
                 }
-        }
+            }
 
         }else if(pedirB){
-        for (int i = 0; i < limitcant.size(); i++) {
+            for (int i = 0; i < limitcant.size(); i++) {
                 if (limitcant.get(i)>0){
                     if((v.getId()==getResources().getIdentifier(id[2]+i,"id",getPackageName()))&&(cant[i]<limitcant.get(i))) {
                         resulcopa[i] += listaprecio[i];
                         cant[i] = resulcopa[i] / listaprecio[i];
                         calcopa[i].setText("Cantidad " + cant[i] + " / " + limitcant.get(i));
-
                     }
                 }
             }
@@ -218,33 +219,52 @@ public class Copas extends AppCompatActivity {
     }
     //pagar y guardar lo datos
     public void pagar(View v) {
-        fineddatos(idUser);
-        if (pedirB==false){
-            String auxpedido = "";
-            for (int k = 0; k < nomcopa.length; k++) {
-                if (cant[k] >= 1) {
-                    String ids = String.valueOf(k+1);
-                    if (!idcant.isEmpty()){
-                        if (idcant.get(k) == k) {
-                            cant[k] = +limitcant.get(k);
-                        }}
-                    String cants = String.valueOf(cant[k]);
-                    if ((ids.length() == 1) && (cants.length() < 10)) {
-                        ids = "." + ids;
-                    }
-                    if (cants.length() == 1) {
-                        cants = "." + cants;
-                    }
-                    auxpedido += ids;
-                    auxpedido += cants;
-                }
-                cant[k]=0;
+
+        fineddatospagar(idUser);
+        long auxtime=1250;
+        CountDownTimer time=new CountDownTimer(auxtime,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
             }
-            insertar(idUser, auxpedido);
-        }else{
-            pedir();
-        }
+            @Override
+            public void onFinish() {
+
+                if (pedirB==false){
+                    String auxpedido = "";
+                    int auxpe=0;
+                    for (int k = 0; k < nomcopa.length; k++) {
+                        String ids = String.valueOf(k+1);
+
+                        for (int i = 0; i < idcant.size(); i++) {
+                            if (idcant.get(i) == k+1) {
+                                auxpe=cant[k] + limitcant.get(i);
+
+                                System.out.println(limitcant.get(i));
+                            }}
+                        String cants = String.valueOf(auxpe);
+
+
+                        Log.i("as",String.valueOf(cant[k]));
+                        if ((ids.length() == 1) && (cants.length() < 10)) {
+                            ids = "." + ids;
+                        }
+                        if (cants.length() == 1) {
+                            cants = "." + cants;
+                        }
+
+                        auxpedido += ids;
+                        auxpedido += cants;
+                    }
+
+                    insertar(idUser, auxpedido);
+                }else{
+                    pedir();
+                }
+            }
+        }.start();
     }
+
     //pedir bebidas en qr y pasar los datos
     private void pedir(){
         Intent i = new Intent(this,Codigoqr.class);
@@ -288,6 +308,8 @@ public class Copas extends AppCompatActivity {
     //seleccionar bebidas---------------------------------------------------------------------------------------------------------
     private void fineddatos(long cod)
     {
+        idcant.clear();
+        limitcant.clear();
         Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
         Call<Usuario> call = consultaApi.findUser(cod);
@@ -324,9 +346,9 @@ public class Copas extends AppCompatActivity {
                                 aux2="";
                             }
                         }
-
+                        sumapedir();
                     }
-                    sumapedir();
+
                 }
             }
             @Override
@@ -335,22 +357,82 @@ public class Copas extends AppCompatActivity {
                 Toast.makeText(Copas.this, "Fallo obtecion de datos", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
     //resetera las cantidades seleccioadas de bebidas-----------------------------------------------------------------------
     private void sumapedir(){
-            for (int i = 0; i < idcopa.length; i++) {
-                for (int j = 0; j < idcant.size(); j++) {
-                    if (idcopa[i]==idcant.get(j)){
-                            calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
-                    }
+        for (int i = 0; i < idcopa.length; i++) {
+            for (int j = 0; j < idcant.size(); j++) {
+                if (idcopa[i]==idcant.get(j)){
+                    calcopa[i].setText("Cantidad "+cant[i]+" / "+limitcant.get(i));
                 }
-                cant[i]=0;
             }
+
+        }
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+    //seleccionar bebidas de pagar--------------------------------------------------------------------------------------------------------
+    private void fineddatospagar(long cod)
+    {
+        idcant.clear();
+        limitcant.clear();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        ConsultaApi consultaApi = retrofit.create(ConsultaApi.class);
+        Call<Usuario> call = consultaApi.findUser(cod);
+        call.enqueue(new Callback<Usuario>()
+        {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response)
+            {
+                if (response.isSuccessful())
+                {
+                    Usuario usuario= response.body();
+                    String auxpedido=usuario.getPedido();
+                    if (auxpedido!=null){
+                        //obtener cantcopas
+                        int aux=0;
+                        String aux2="";
+                        int aux3=0;
+                        for (int j = 0; j < auxpedido.length(); j++)
+                        {
+                            aux++;
+                            aux2+=auxpedido.charAt(j);
+                            if (aux==2)
+                            {
+                                if (0==aux3%2)
+                                {
+                                    idcant.add(Integer.parseInt(aux2.replace(".","")));
+                                }
+                                else
+                                {
+                                    limitcant.add(Integer.parseInt(aux2.replace(".","")));
+                                }
+                                aux3++;
+                                aux=0;
+                                aux2="";
+                            }
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t)
+            {
+                Toast.makeText(Copas.this, "Fallo obtecion de datos", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Toast.makeText(Copas.this, String.valueOf(pedirB), Toast.LENGTH_SHORT).show();
+        if (pedirB){
+            Toast.makeText(Copas.this, "2", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
 }
