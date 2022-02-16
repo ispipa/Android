@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.spania.sala17.adapter.AdapterMusic;
 import com.spania.sala17.pojo.ObjetoMusica;
@@ -35,12 +40,19 @@ public class Music extends AppCompatActivity
     int i = 0;
     ArrayList<ObjetoMusica> objetoMusicas = new ArrayList<>();
     String artist;
-    String artistAlbun;
-    String artisMusic;
+    String imaCancion;
+    String artisMusicLink;
+    String tituloCancion;
     //-------------------------------
-    ImageView imaAlbun;
+    public static ImageView imaAlbun;
     SearchView buscarMusica;
-    RecyclerView recyclerView;
+   public static RecyclerView recyclerView;
+    //-------------------------------
+    static SeekBar seekBar;
+      static MediaPlayer mediaPlayer;
+        static Handler handler = new Handler();
+       static TextView inicioCancion;
+       static TextView finalCancion;
     //-------------------------------
 
     @Override
@@ -53,7 +65,11 @@ public class Music extends AppCompatActivity
         buscarMusica = findViewById(R.id.buscadorMusica);
         recyclerView = findViewById(R.id.listaMusica);
         //---------------------------------------------
-
+        mediaPlayer = new MediaPlayer();
+        seekBar = findViewById(R.id.seekBar);
+        seekBar.setMax(100);
+        inicioCancion = findViewById(R.id.inicioDuracionMusica);
+        finalCancion = findViewById(R.id.finalDuracionMusica);
         //---------------------------------------------
         buscarCanciones();
     }
@@ -70,7 +86,6 @@ public class Music extends AppCompatActivity
                     URL url = new URL("https://deezerdevs-deezer.p.rapidapi.com/search?limit=24&&q=" + cancionUsuario);
                     System.out.println("Esta es la url que se le envia :" + url);
                     HttpsURLConnection urlConnection =  (HttpsURLConnection) url.openConnection();
-
                     urlConnection.setRequestProperty("x-rapidapi-host","deezerdevs-deezer.p.rapidapi.com");
                     urlConnection.setRequestProperty("x-rapidapi-key","aa1f3addc0mshd9ae334ff631ab4p12703bjsna3fa377c581f");
                     InputStream is = urlConnection.getInputStream();
@@ -89,34 +104,19 @@ public class Music extends AppCompatActivity
                     {
                         JSONObject music = array.getJSONObject(i);
                         artist= (music.getJSONObject("artist").getString("name"));
-                        artistAlbun= (music.getJSONObject("album").getString("cover_medium"));
-                        artisMusic= (music.getString("link"));
-
-                        /*if(artist.contains(music.getJSONObject("artist").getString("name")) &&
-                                artistAlbun.contains( music.getJSONObject("album").getString("cover_medium"))&&
-                                artisMusic.contains(music.getString("link")))
-                        {
-                            artist.remove(i);
-                            artistAlbun.remove(i);
-                            objetoMusicas.remove(i);
-                        }else
-                        {
-                            objetoMusicas.add(new ObjetoMusica(artisMusic.get(i),artist.get(i),artistAlbun.get(i)));
-                        }*/
-                        objetoMusicas.add(new ObjetoMusica(artisMusic,artist,artistAlbun));
+                        imaCancion= (music.getJSONObject("album").getString("cover_medium"));
+                        artisMusicLink= (music.getString("link"));
+                        tituloCancion = (music.getString("title"));
+                        objetoMusicas.add(new ObjetoMusica(tituloCancion,artist,imaCancion,artisMusicLink));
                     }
-                    System.out.println(objetoMusicas.get(1).getNombreCancion());
-                    System.out.println(objetoMusicas.get(1).getNombreArtista());
-                    System.out.println(objetoMusicas.get(1).getUrlCancion());
                     System.out.println(array.length());
                     runOnUiThread(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                                    AdapterMusic adapterMusic = new AdapterMusic(objetoMusicas, Music.this);
-                                    recyclerView.setAdapter(adapterMusic);
-                            //ponerimagenAlbun(artistAlbun);
+                            ponerimagenAlbun();
+
                         }
                     });
                 }
@@ -136,11 +136,13 @@ public class Music extends AppCompatActivity
         //System.out.println(" Estoy en prepararImagen :" +  "\n" + nuevoNombreImagenAlbum);
         return nuevoNombreImagenAlbum;
     }*/
-    public void ponerimagenAlbun(String imagenAlbun)
+    public void ponerimagenAlbun()
     {
-        //System.out.println(" Estoy en ponerimagenAlbun :" +  "\n" + imagenAlbun);
-        Picasso.get().load(imagenAlbun).into(imaAlbun);
+        recyclerView.setLayoutManager(new LinearLayoutManager(Music.this));
+        AdapterMusic adapterMusic = new AdapterMusic(objetoMusicas,Music.this);
+        recyclerView.setAdapter(adapterMusic);
     }
+
     public  void buscarCanciones()
     {
         buscarMusica.setOnQueryTextListener(new SearchView.OnQueryTextListener()
@@ -162,7 +164,71 @@ public class Music extends AppCompatActivity
             }
         });
     }
+    public static void prepararMediaPlayer(String duracion)
+    {
+        try
+        {
+            if(mediaPlayer.isPlaying())
+            {
+                handler.removeCallbacks(actualizacion);
+            }
+            else
+                {
+                    mediaPlayer.reset();
+                    mediaPlayer.setDataSource(duracion);
+                    mediaPlayer.prepare();
+                    finalCancion.setText(cambioMilliSegundosATimer(mediaPlayer.getDuration()));
+                    mediaPlayer.start();
+                    actualizarSeekBar();
+                }
 
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    private static Runnable actualizacion = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            long duracionEsperada = mediaPlayer.getCurrentPosition();
+            inicioCancion.setText(cambioMilliSegundosATimer(duracionEsperada));
+            actualizarSeekBar();
+
+        }
+    };
+    private static void actualizarSeekBar()
+    {
+        if(mediaPlayer.isPlaying())
+        {
+            seekBar.setProgress((int) (((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration())*100));
+            handler.postDelayed(actualizacion, 1000);
+        }
+    }
+    public static String cambioMilliSegundosATimer(long milisegundos)
+    {
+        String tiempo = "";
+        String segundosTiempo ="";
+        int horas = (int) (milisegundos / (1000 * 60 * 60));
+        int minutos = (int) (milisegundos % (1000 * 60 * 60)) / (1000 * 60);
+        int  segundos = (int) ((milisegundos % (1000 * 60 * 60)) % (1000 * 60) / 1000);
+        if(horas >0)
+        {
+            tiempo = horas + ":";
+        }
+        if(segundos < 10)
+        {
+            segundosTiempo = "0" + segundos;
+        }
+        else
+            {
+                segundosTiempo = "" +segundos;
+            }
+        tiempo = tiempo + minutos + ":" + segundosTiempo;
+        return tiempo;
+    }
     /*private void buscar(String s)
     {
         ArrayList<MusicaObjeto>myList = new ArrayList<>();
