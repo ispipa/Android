@@ -1,14 +1,17 @@
 package com.spania.sala17;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -17,6 +20,7 @@ import com.spania.sala17.interfaces.ConsultaApi;
 import com.spania.sala17.models.Evento;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,38 +64,48 @@ public class  Eventos extends AppCompatActivity
         comprando = llegar.getStringExtra("comprando");
         String idRecibido = llegar.getStringExtra("iduser");
 
-        //aqui va lo de listview en caso de crasheo
-        listadoEntradas.add(new Entrada(textoRecogido, R.drawable.pari, vipRecogido));
-        adapter = new CustomAdapter(listadoEntradas, this);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        System.out.println("añade entrada");
 
 
         //hago get de los eventos que ya existen
         Retrofit retrofitGet = new Retrofit.Builder().baseUrl("http://ec2-54-205-129-91.compute-1.amazonaws.com:8080/").addConverterFactory(GsonConverterFactory.create()).build();
         ConsultaApi consultaGet = retrofitGet.create(ConsultaApi.class);
-        Call<Evento> callGet = consultaGet.findEvento(idUserLong);
+        Call<List<Evento>> callGet = consultaGet.findEvento(idUserLong);
         System.out.println("hacemos get");
-        callGet.enqueue(new Callback<Evento>()
+        callGet.enqueue(new Callback<List<Evento>>()
         {
             @Override
-            public void onResponse(Call<Evento> call, Response<Evento> response)
+            public void onResponse(Call<List<Evento>> call, Response<List<Evento>> response)
             {
                 System.out.println(response.code());
                 if(response.isSuccessful())
                 {
+
                     System.out.println("Todo ok");
+                    List <Evento> listado = response.body();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                    {
+                        listadoEntradas.clear();
+                        for (Evento event: listado)
+                        {
+                            //aqui va lo de listview en caso de crasheo
+                            listadoEntradas.add(new Entrada(event.getNombreEvento(), R.drawable.pari, vipRecogido));
+                            adapter = new CustomAdapter(listadoEntradas, Eventos.this);
+                            listView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                            System.out.println("añade entrada");
+                        }
+                        //listado.forEach(evento -> System.out.println(evento.getNombreEvento()));
+
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<Evento> call, Throwable t)
+            public void onFailure(Call<List<Evento>> call, Throwable t)
             {
-                System.out.println("Conexión fallida: " + t.toString());
+                System.out.println("Conexion fallida");
             }
         });
-
         System.out.println("boolean recogido: " + comprando);
 
         if( comprando != null && comprando.compareTo("true") == 0 )
