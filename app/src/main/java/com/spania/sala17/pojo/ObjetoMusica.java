@@ -1,7 +1,8 @@
 package com.spania.sala17.pojo;
 
-public class ObjetoMusica
-{
+import java.util.ArrayList;
+
+public class ObjetoMusica extends ArrayList<ObjetoMusica> {
     String nombreCancion;
     String nombreArtista;
     String imaCancion;

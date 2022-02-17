@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.SeekBar;
@@ -33,12 +34,12 @@ import javax.net.ssl.HttpsURLConnection;
 import java.util.ArrayList;
 
 
-public class Music extends AppCompatActivity
+public class Music<adapterMusic> extends AppCompatActivity
 {
     //-------------------------------
     String cancionUsuario = "";
     int i = 0;
-    ArrayList<ObjetoMusica> objetoMusicas = new ArrayList<>();
+    public static ArrayList<ObjetoMusica> objetoMusicas = new ArrayList<>();
     String artist;
     String imaCancion;
     String artisMusicLink;
@@ -53,6 +54,8 @@ public class Music extends AppCompatActivity
         static Handler handler = new Handler();
        static TextView inicioCancion;
        static TextView finalCancion;
+   public  static AdapterMusic adapterMusic;
+
     //-------------------------------
 
     @Override
@@ -105,7 +108,7 @@ public class Music extends AppCompatActivity
                         JSONObject music = array.getJSONObject(i);
                         artist= (music.getJSONObject("artist").getString("name"));
                         imaCancion= (music.getJSONObject("album").getString("cover_medium"));
-                        artisMusicLink= (music.getString("link"));
+                        artisMusicLink= (music.getString("preview"));
                         tituloCancion = (music.getString("title"));
                         objetoMusicas.add(new ObjetoMusica(tituloCancion,artist,imaCancion,artisMusicLink));
                     }
@@ -139,7 +142,7 @@ public class Music extends AppCompatActivity
     public void ponerimagenAlbun()
     {
         recyclerView.setLayoutManager(new LinearLayoutManager(Music.this));
-        AdapterMusic adapterMusic = new AdapterMusic(objetoMusicas,Music.this);
+        adapterMusic = new AdapterMusic(objetoMusicas,Music.this);
         recyclerView.setAdapter(adapterMusic);
     }
 
@@ -159,10 +162,32 @@ public class Music extends AppCompatActivity
                 //buscar(s);
                 cancionUsuario  = s;
                 System.out.println(cancionUsuario);
-                reponseDeezers();
+                if(cancionUsuario.equals(""))
+                {
+                    System.out.println("sdfsdfds");
+                    objetoMusicas.clear();
+                    adapterMusic.notifyDataSetChanged();
+                    actualizarSeekBar();
+
+                }
+                else
+                {
+                    reponseDeezers();
+                }
                 return false;
             }
         });
+    }
+    public static void actualizarBoolean()
+    {
+        if(AdapterMusic.clickUsuario)
+        {
+            System.out.println("sdfsdfds");
+            Music.objetoMusicas.clear();
+            adapterMusic.notifyDataSetChanged();
+            actualizarSeekBar();
+        }
+        AdapterMusic.clickUsuario = false;
     }
     public static void prepararMediaPlayer(String duracion)
     {
@@ -229,17 +254,45 @@ public class Music extends AppCompatActivity
         tiempo = tiempo + minutos + ":" + segundosTiempo;
         return tiempo;
     }
-    /*private void buscar(String s)
+    /*public  void buscar(String imaCancion, String musciLink)
     {
-        ArrayList<MusicaObjeto>myList = new ArrayList<>();
-        for (MusicaObjeto obj : myList)
+        objetoMusicas = new ArrayList<>();
+        for (ObjetoMusica obj : objetoMusicas)
         {
-            if(obj.getArtistAlbun().toLowerCase().contains(s.toLowerCase()))
+            if(obj.getImaCancion().toLowerCase().contains(imaCancion.toLowerCase()) && obj.getArtisMusicLink().toLowerCase().contains(musciLink.toLowerCase()))
             {
-                myList.add(obj);
+                objetoMusicas.add(obj);
+                Picasso.get().load(obj.getImaCancion()).into(Music.imaAlbun);
+                prepararMediaPlayer(obj.getArtisMusicLink());
+                adapterMusic = new AdapterMusic(obj,Music.this);
             }
         }
-        AdapterMusic adapterMusic = new AdapterMusic(myList);
+        AdapterMusic adapterMusic = new AdapterMusic(objetoMusicas,Music.this);
         rv.setAdapter(adapterMusic);
-    }*/
+    }/*/
+    public  static void buscar(ArrayList<String> cancionesPantall)
+    {
+        /*for (String obj : musicaDatos)
+        {
+            if (!obj.equals("")) {
+                musicaDatos.add(obj);
+                Picasso.get().load(musicaDatos.get(i)).into(Music.imaAlbun);
+                Music.prepararMediaPlayer(obj.getArtisMusicLink());
+                //Music.adapterMusic = new AdapterMusic(obj, ct);
+                //Music.recyclerView.setAdapter(Music.adapterMusic);
+                System.out.println(obj);
+            }
+        }*/
+        for (int i = 0; i <cancionesPantall.size() ; i++)
+        {
+                Picasso.get().load(cancionesPantall.get(i)).into(imaAlbun);
+                prepararMediaPlayer(cancionesPantall.get(i));
+                //Music.adapterMusic = new AdapterMusic(obj, ct);
+                //Music.recyclerView.setAdapter(Music.adapterMusic);
+            if(cancionesPantall.size() == 24)
+            {
+                    cancionesPantall.clear();
+            }
+        }
+    }
 }

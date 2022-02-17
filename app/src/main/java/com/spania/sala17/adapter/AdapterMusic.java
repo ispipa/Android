@@ -24,14 +24,30 @@ import java.util.ArrayList;
 
 public class AdapterMusic extends RecyclerView.Adapter<AdapterMusic.ViewHolder>
 {
-   public static ArrayList<ObjetoMusica> musicaDatos;
+    public static ArrayList<ObjetoMusica> musicaDatos;
     private Context ct;
+    public static  boolean clickUsuario = false;
 
-
-    public AdapterMusic(ArrayList<ObjetoMusica> musicaDatos, Context ct) {
+    public AdapterMusic(ArrayList<ObjetoMusica> musicaDatos, Context ct)
+    {
         this.musicaDatos = musicaDatos;
         this.ct = ct;
     }
+    /*public  void buscar(String imaCancion, String musciLink)
+    {
+        musicaDatos = new ArrayList<>();
+        for (ObjetoMusica obj : musicaDatos)
+        {
+            if (obj.getImaCancion().toLowerCase().contains(imaCancion.toLowerCase()) && obj.getArtisMusicLink().toLowerCase().contains(musciLink.toLowerCase())) {
+                musicaDatos.add(obj);
+                Picasso.get().load(obj.getImaCancion()).into(Music.imaAlbun);
+                Music.prepararMediaPlayer(obj.getArtisMusicLink());
+                //Music.adapterMusic = new AdapterMusic(obj, ct);
+                //Music.recyclerView.setAdapter(Music.adapterMusic);
+                System.out.println(obj);
+            }
+        }
+    }*/
 
     @NonNull
     @Override
@@ -41,16 +57,21 @@ public class AdapterMusic extends RecyclerView.Adapter<AdapterMusic.ViewHolder>
         view.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
+            public  void onClick(View v)
             {
                 int itemPosition = Music.recyclerView.getChildLayoutPosition(view);
+                clickUsuario = true;
                 String imaMusica = String.valueOf(musicaDatos.get(itemPosition).getImaCancion());
-                //String duracionCancion = String.valueOf(musicaDatos.get(itemPosition).getArtisMusicLink());
-                String duracionCancion = "https://cdns-preview-b.dzcdn.net/stream/c-be4df919180127a82ca1bae8ce57c38b-6.mp3";
+                String duracionCancion = String.valueOf(musicaDatos.get(itemPosition).getArtisMusicLink());
+                ArrayList<String> cancaionesPantalla = new ArrayList<>();
+                cancaionesPantalla.add(imaMusica);
+                cancaionesPantalla.add(duracionCancion);
+                //String duracionCancion ="https://cdns-preview-b.dzcdn.net/stream/c-be4df919180127a82ca1bae8ce57c38b-6.mp3 ";
+                //String duracionCancion ="spotify:track:5PycBIeabfvX3n9ILG7Vrv ";
                 System.out.println(duracionCancion);
-                Picasso.get().load(imaMusica).into(Music.imaAlbun);
-                prepararMediaPlayer(duracionCancion);
-
+                Music.actualizarBoolean();
+                Music.buscar(cancaionesPantalla);
+                //Music.actualizarBoolean();
             }
         });
         return new ViewHolder(view);
