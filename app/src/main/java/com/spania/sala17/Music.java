@@ -55,6 +55,7 @@ public class Music<adapterMusic> extends AppCompatActivity
        static TextView inicioCancion;
        static TextView finalCancion;
    public  static AdapterMusic adapterMusic;
+   //public static  boolean cambio = true;
 
     //-------------------------------
 
@@ -167,8 +168,7 @@ public class Music<adapterMusic> extends AppCompatActivity
                     System.out.println("sdfsdfds");
                     objetoMusicas.clear();
                     adapterMusic.notifyDataSetChanged();
-                    actualizarSeekBar();
-
+                    //actualizarSeekBar();
                 }
                 else
                 {
@@ -183,22 +183,36 @@ public class Music<adapterMusic> extends AppCompatActivity
         if(AdapterMusic.clickUsuario)
         {
             System.out.println("sdfsdfds");
-            Music.objetoMusicas.clear();
+            objetoMusicas.clear();
             adapterMusic.notifyDataSetChanged();
-            actualizarSeekBar();
+            //actualizarSeekBar();
         }
-        AdapterMusic.clickUsuario = false;
+        else
+            {
+                AdapterMusic.clickUsuario = false;
+            }
+
     }
     public static void prepararMediaPlayer(String duracion)
     {
+
         try
         {
-            if(mediaPlayer.isPlaying())
+            if(AdapterMusic.clickUsuario)
             {
-                handler.removeCallbacks(actualizacion);
-            }
-            else
+                if (mediaPlayer.isPlaying())
                 {
+                    handler.removeCallbacks(actualizacion);
+                    mediaPlayer.reset();
+                    mediaPlayer.setDataSource(duracion);
+                    mediaPlayer.prepare();
+                    finalCancion.setText(cambioMilliSegundosATimer(mediaPlayer.getDuration()));
+                    mediaPlayer.start();
+                    actualizarSeekBar();
+
+                } else
+                    {
+                    //cambio = true;
                     mediaPlayer.reset();
                     mediaPlayer.setDataSource(duracion);
                     mediaPlayer.prepare();
@@ -206,7 +220,7 @@ public class Music<adapterMusic> extends AppCompatActivity
                     mediaPlayer.start();
                     actualizarSeekBar();
                 }
-
+            }
         }
         catch (IOException e)
         {
@@ -231,6 +245,11 @@ public class Music<adapterMusic> extends AppCompatActivity
             seekBar.setProgress((int) (((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration())*100));
             handler.postDelayed(actualizacion, 1000);
         }
+        else
+            {
+                seekBar.setProgress((int) (((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration())*100));
+                handler.postDelayed(actualizacion, 1000);
+            }
     }
     public static String cambioMilliSegundosATimer(long milisegundos)
     {
@@ -254,45 +273,23 @@ public class Music<adapterMusic> extends AppCompatActivity
         tiempo = tiempo + minutos + ":" + segundosTiempo;
         return tiempo;
     }
-    /*public  void buscar(String imaCancion, String musciLink)
+
+   /* public  static void buscar(ArrayList<String> cancionesPantall)
     {
-        objetoMusicas = new ArrayList<>();
-        for (ObjetoMusica obj : objetoMusicas)
-        {
-            if(obj.getImaCancion().toLowerCase().contains(imaCancion.toLowerCase()) && obj.getArtisMusicLink().toLowerCase().contains(musciLink.toLowerCase()))
-            {
-                objetoMusicas.add(obj);
-                Picasso.get().load(obj.getImaCancion()).into(Music.imaAlbun);
-                prepararMediaPlayer(obj.getArtisMusicLink());
-                adapterMusic = new AdapterMusic(obj,Music.this);
-            }
-        }
-        AdapterMusic adapterMusic = new AdapterMusic(objetoMusicas,Music.this);
-        rv.setAdapter(adapterMusic);
-    }/*/
-    public  static void buscar(ArrayList<String> cancionesPantall)
-    {
-        /*for (String obj : musicaDatos)
-        {
-            if (!obj.equals("")) {
-                musicaDatos.add(obj);
-                Picasso.get().load(musicaDatos.get(i)).into(Music.imaAlbun);
-                Music.prepararMediaPlayer(obj.getArtisMusicLink());
-                //Music.adapterMusic = new AdapterMusic(obj, ct);
-                //Music.recyclerView.setAdapter(Music.adapterMusic);
-                System.out.println(obj);
-            }
-        }*/
+        System.out.println("Esto es lo que tiene canciaoens: " + cancionesPantall);
         for (int i = 0; i <cancionesPantall.size() ; i++)
         {
+            int j = i +1;
                 Picasso.get().load(cancionesPantall.get(i)).into(imaAlbun);
                 prepararMediaPlayer(cancionesPantall.get(i));
                 //Music.adapterMusic = new AdapterMusic(obj, ct);
                 //Music.recyclerView.setAdapter(Music.adapterMusic);
-            if(cancionesPantall.size() == 24)
+            if(i < j)
             {
-                    cancionesPantall.clear();
+                    cancionesPantall.remove(i -1);
             }
+            System.out.println(cancionesPantall);
         }
-    }
+        System.out.println(cancionesPantall);
+    }*/
 }

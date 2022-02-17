@@ -18,7 +18,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ConsultaApi {
-    @Headers("user-key: dXNlcjoxMjM0")
+
     @GET("bebida/idBebida/{idBebida}")
     public Call<Bebida> findB(@Path("idBebida")Long idBebida);
 

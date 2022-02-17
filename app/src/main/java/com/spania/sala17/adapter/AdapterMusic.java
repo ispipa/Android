@@ -63,15 +63,17 @@ public class AdapterMusic extends RecyclerView.Adapter<AdapterMusic.ViewHolder>
                 clickUsuario = true;
                 String imaMusica = String.valueOf(musicaDatos.get(itemPosition).getImaCancion());
                 String duracionCancion = String.valueOf(musicaDatos.get(itemPosition).getArtisMusicLink());
-                ArrayList<String> cancaionesPantalla = new ArrayList<>();
-                cancaionesPantalla.add(imaMusica);
-                cancaionesPantalla.add(duracionCancion);
                 //String duracionCancion ="https://cdns-preview-b.dzcdn.net/stream/c-be4df919180127a82ca1bae8ce57c38b-6.mp3 ";
                 //String duracionCancion ="spotify:track:5PycBIeabfvX3n9ILG7Vrv ";
                 System.out.println(duracionCancion);
                 Music.actualizarBoolean();
-                Music.buscar(cancaionesPantalla);
-                //Music.actualizarBoolean();
+                if(clickUsuario)
+                {
+                    Picasso.get().load(imaMusica).into(Music.imaAlbun);
+                    prepararMediaPlayer(duracionCancion);
+                }
+
+                Music.actualizarBoolean();
             }
         });
         return new ViewHolder(view);
