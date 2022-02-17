@@ -6,6 +6,8 @@ import com.spania.sala17.models.Bebida;
 import com.spania.sala17.models.Evento;
 import com.spania.sala17.models.Usuario;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -47,5 +49,5 @@ public interface ConsultaApi {
                                 @Field("usuario") Long usuario);
 
     @GET("evento/usuario/{usuario}")
-    Call<Evento> findEvento(@Path("usuario") Long usuario);
+    Call <List<Evento>> findEvento(@Path("usuario") Long usuario);
 }
