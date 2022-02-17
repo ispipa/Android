@@ -32,21 +32,13 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/ver"
-        app:layout_constraintTop_toBottomOf="@+id/ver" />
-
-    <Button
         android:id="@+id/pedirotravez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volver a pedir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ver"
+        app:layout_constraintStart_toStartOf="@+id/ver"
         app:layout_constraintTop_toBottomOf="@+id/ver" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Codigoqr extends AppCompatActivity
 {
-    Button pedir,salir;
+    Button pedir;
 
     TextView ver,cantselect;
     ImageView codigo;
@@ -39,7 +39,7 @@ public class Codigoqr extends AppCompatActivity
         ver = findViewById(R.id.ver);
         codigo = findViewById(R.id.imageqr);
         pedir=findViewById(R.id.pedirotravez);
-        salir=findViewById(R.id.menu);
+
 
 
         Intent i=getIntent();
@@ -69,15 +69,6 @@ public class Codigoqr extends AppCompatActivity
             }
         });
 
-        salir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Codigoqr.this,DatosUser.class);
-                i.putExtra("iduser",String.valueOf(idUser));
-                startActivity(i);
-
-            }
-        });
     }
 
     private void qr(){
