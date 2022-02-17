@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.SeekBar;
@@ -49,11 +50,11 @@ public class Music<adapterMusic> extends AppCompatActivity
     SearchView buscarMusica;
    public static RecyclerView recyclerView;
     //-------------------------------
-    static SeekBar seekBar;
+    public static SeekBar seekBar;
       static MediaPlayer mediaPlayer;
         static Handler handler = new Handler();
-       static TextView inicioCancion;
-       static TextView finalCancion;
+      public  static TextView inicioCancion;
+      public  static TextView finalCancion;
    public  static AdapterMusic adapterMusic;
    //public static  boolean cambio = true;
 
@@ -189,8 +190,9 @@ public class Music<adapterMusic> extends AppCompatActivity
         }
         else
             {
+                System.out.println("sdfsdfds123");
                 AdapterMusic.clickUsuario = false;
-            }
+           }
 
     }
     public static void prepararMediaPlayer(String duracion)
@@ -247,6 +249,10 @@ public class Music<adapterMusic> extends AppCompatActivity
         }
         else
             {
+               imaAlbun.setVisibility(View.INVISIBLE);
+                seekBar.setVisibility(View.INVISIBLE);
+               inicioCancion.setVisibility(View.INVISIBLE);
+               finalCancion.setVisibility(View.INVISIBLE);
                 seekBar.setProgress((int) (((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration())*100));
                 handler.postDelayed(actualizacion, 1000);
             }
@@ -292,4 +298,11 @@ public class Music<adapterMusic> extends AppCompatActivity
         }
         System.out.println(cancionesPantall);
     }*/
+   @Override
+   protected void onPause()
+   {
+       super.onPause();
+       mediaPlayer.reset();
+   }
 }
+

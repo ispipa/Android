@@ -63,14 +63,18 @@ public class AdapterMusic extends RecyclerView.Adapter<AdapterMusic.ViewHolder>
                 clickUsuario = true;
                 String imaMusica = String.valueOf(musicaDatos.get(itemPosition).getImaCancion());
                 String duracionCancion = String.valueOf(musicaDatos.get(itemPosition).getArtisMusicLink());
-                //String duracionCancion ="https://cdns-preview-b.dzcdn.net/stream/c-be4df919180127a82ca1bae8ce57c38b-6.mp3 ";
-                //String duracionCancion ="spotify:track:5PycBIeabfvX3n9ILG7Vrv ";
+                //String duracionCancion ="https://e-cdnt-proxy-8.dzcdn.net/media/1/0cda1a4b29a06a23250505d6e2d3afda2c06d4597a6d5af2f65698029b0638e688f5eb72d73d368e91e8a81f308b5b3c36572dccd980f483665bae364dd931194495b12927116b767c35c6bb84ab52cc?sJJXmAgP0r-CnTPyB7P0qv3vDhGENNsj8g7b8SOwinbufjqlEOB1pPZWPsoczL9HDqkT4K1b2wsAV_rzNTHMqxV9ZiS3juffN00aX6iZvap4Q1CMF7UO2UtCaBlZ_GnnLL7QFegSfmiPc6fJ_T910FADp9DHm73mepc8rDrA69Fc5X2zspKGzEAYXaWzT8LBpaQLYqtXL01K9uaP5UvkjMeE0x4rwXOwVXwpR5JBtWTPewWf8TdipYrESPcrZb9k2ZuuwmN1J193MK2w4x_QH8ZAxqG0zdnoQDELlTp3l7bt9-oM5o9xa3s64wYUf4Y5g4vM-StTzFvIdQ/;stream.mp3";
+                //String duracionCancion ="https://e-cdnt-proxy-8.dzcdn.net/media/1/0cda1a4b29a06a23250505d6e2d3afda2c06d4597a6d5af2f65698029b0638e688f5eb72d73d368e91e8a81f308b5b3c36572dccd980f483665bae364dd931194495b12927116b767c35c6bb84ab52cc?sJJXmAgP0r-CnTPyB7P0qv3vDhGENNsj8g7b8SOwinbufjqlEOB1pPZWPsoczL9HDqkT4K1b2wsAV_rzNTHMqxV9ZiS3juffN00aX6iZvap4Q1CMF7UO2UtCaBlZ_GnnLL7QFegSfmiPc6fJ_T910FADp9DHm73mepc8rDrA69Fc5X2zspKGzEAYXaWzT8LBpaQLYqtXL01K9uaP5UvkjMeE0x4rwXOwVXwpR5JBtWTPewWf8TdipYrESPcrZb9k2ZuuwmN1J193MK2w4x_QH8ZAxqG0zdnoQDELlTp3l7bt9-oM5o9xa3s64wYUf4Y5g4vM-StTzFvIdQ ";
                 System.out.println(duracionCancion);
                 Music.actualizarBoolean();
                 if(clickUsuario)
                 {
                     Picasso.get().load(imaMusica).into(Music.imaAlbun);
                     prepararMediaPlayer(duracionCancion);
+                    Music.imaAlbun.setVisibility(View.VISIBLE);
+                    Music.seekBar.setVisibility(View.VISIBLE);
+                    Music.inicioCancion.setVisibility(View.VISIBLE);
+                    Music.finalCancion.setVisibility(View.VISIBLE);
                 }
 
                 Music.actualizarBoolean();
