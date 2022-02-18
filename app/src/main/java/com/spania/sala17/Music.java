@@ -109,7 +109,7 @@ public class Music<adapterMusic> extends AppCompatActivity
                     {
                         JSONObject music = array.getJSONObject(i);
                         artist= (music.getJSONObject("artist").getString("name"));
-                        imaCancion= (music.getJSONObject("album").getString("cover_medium"));
+                        imaCancion= (music.getJSONObject("album").getString("cover_big"));
                         artisMusicLink= (music.getString("preview"));
                         tituloCancion = (music.getString("title"));
                         objetoMusicas.add(new ObjetoMusica(tituloCancion,artist,imaCancion,artisMusicLink));
