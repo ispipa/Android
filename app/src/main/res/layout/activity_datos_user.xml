@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondos"
+    android:background="@drawable/gradient_backgound_b"
     tools:context=".DatosUser">
 
     <ImageView
@@ -17,8 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.137"
-        app:srcCompat="@drawable/alex"
-        tools:srcCompat="@drawable/alex" />
+        app:srcCompat="@drawable/anonimo"
+        tools:srcCompat="@drawable/anonimo" />
 
     <TextView
         android:id="@+id/bienvenida"
@@ -166,18 +166,4 @@
             tools:text="Canción Actual ( only VIP )" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/settings"
-        android:layout_width="64dp"
-        android:layout_height="59dp"
-        android:backgroundTint="#0054BA"
-        android:text="Button"
-        app:cornerRadius="20dp"
-        app:icon="@android:drawable/ic_menu_manage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imagenUser"
-        app:layout_constraintHorizontal_bias="0.543"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
 </androidx.constraintlayout.widget.ConstraintLayout>

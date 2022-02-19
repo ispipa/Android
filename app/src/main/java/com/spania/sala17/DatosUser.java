@@ -16,6 +16,7 @@ public class DatosUser extends AppCompatActivity
     String welcome;
     Button btEventos;
     Button btcompra;
+    Button btMusica;
     String idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +31,7 @@ public class DatosUser extends AppCompatActivity
 
         btTinder = findViewById(R.id.btTinder);
         btEventos = findViewById(R.id.btEventos);
+        btMusica = findViewById(R.id.btCancion);
         bienvenida = findViewById(R.id.bienvenida);
         btcompra=findViewById(R.id.btCompra);
         Intent j = getIntent();
@@ -39,7 +41,7 @@ public class DatosUser extends AppCompatActivity
         //si viene de registros seteo un texto al textView, si viene de login seteo otro
         if(!nombreRegistro.equals(""))
         {
-            bienvenida.setText("Willkommen, " + nombreRegistro + "!");
+            bienvenida.setText("Bienvenido, " + nombreRegistro + "!");
         }
         else
             {
@@ -70,12 +72,23 @@ public class DatosUser extends AppCompatActivity
             }
         });
         //Pasar de esta activity a la del comprar copas
-        btcompra.setOnClickListener(new View.OnClickListener() {
+        btcompra.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Intent e = new Intent(DatosUser.this, Copas.class);
                 e.putExtra("iduser",String.valueOf(idUser));
                 startActivity(e);
+            }
+        });
+        btMusica.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent a = new Intent(DatosUser.this,Music.class);
+                startActivity(a);
             }
         });
 

@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity
     Button btRegistro;
     String letra;
     //------------------------
-    Button musica;
     //------------------------
     boolean paso=false;
     @Override
@@ -48,15 +47,13 @@ public class MainActivity extends AppCompatActivity
         pss = findViewById(R.id.password);
         btRegistro = findViewById(R.id.reg);
         //-------------------
-        musica = findViewById(R.id.musica);
-        //-------------------
 
-        TextView tvMultiColor = (TextView) findViewById(R.id.sala);
+        /*TextView tvMultiColor = (TextView) findViewById(R.id.sala);
         Spannable wordToSpan = new SpannableString("Sala 17");
         wordToSpan.setSpan(new ForegroundColorSpan(Color.RED), 0,2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         wordToSpan.setSpan(new ForegroundColorSpan(Color.RED), 4,7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         wordToSpan.setSpan(new ForegroundColorSpan(Color.YELLOW),2 ,5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tvMultiColor.setText(wordToSpan);
+        tvMultiColor.setText(wordToSpan);*/
         //forgot();
         btRegistro.setOnClickListener(new View.OnClickListener()
         {
@@ -65,16 +62,6 @@ public class MainActivity extends AppCompatActivity
             {
                 Intent registrarse = new Intent(MainActivity.this, Registros.class);
                 startActivity(registrarse);
-            }
-        });
-        //---------------------------------
-        musica.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent a = new Intent(MainActivity.this,Music.class);
-                startActivity(a);
             }
         });
         //---------------------------------
