@@ -29,10 +29,10 @@
             android:exported="false" />
         <activity
             android:name=".Registros"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".OpcionesCompra"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".PaganiniEntradas"
             android:exported="false" />
@@ -41,7 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".DatosUser"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Seleccionador"
             android:exported="false" />
@@ -50,24 +50,19 @@
             android:exported="false" />
         <activity
             android:name=".Music"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Eventos"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Tinder"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Copas"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
 
         <meta-data
